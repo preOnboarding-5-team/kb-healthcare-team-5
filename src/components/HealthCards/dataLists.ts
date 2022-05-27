@@ -21,8 +21,8 @@ export const keyList = [
 ];
 
 export const colors = [
-  '#AA3DD3',
   '#58BB3B',
+  '#AA3DD3',
   '#788CF4',
   '#6A98E7',
   '#9F44BE',
