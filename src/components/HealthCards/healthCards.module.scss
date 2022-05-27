@@ -1,0 +1,74 @@
+.healthCards {
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 35px 20px;
+
+  .topContent {
+    width: 360px;
+
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      margin-top: 35px;
+      font-size: 30px;
+      font-weight: 700;
+      font-style: oblique;
+      letter-spacing: 1px;
+    }
+  }
+
+  .title {
+    font-size: 25px;
+    font-weight: 700;
+    margin: 20px 0 30px;
+    color: purple;
+  }
+
+  .explain {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 25px;
+    mark {
+      background-color: transparent;
+      font-weight: 700;
+    }
+  }
+
+  .addExplain {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 25px;
+    color: grey;
+    margin: 10px 0 15px;
+  }
+
+  .hashtagWrap {
+    margin-bottom: 50px;
+    .hashtag {
+      width: 90px;
+      padding: 8px 15px;
+      font-size: 15px;
+      font-weight: 500;
+      border-radius: 15px;
+      background-color: #fedbe0;
+      color: grey;
+    }
+  }
+
+  .recommend {
+    font-size: 18px;
+    font-weight: 700;
+    color: purple;
+    margin: 40px 0 20px;
+  }
+
+  ul {
+    margin-left: 20px;
+    li {
+      list-style-type: disc;
+      line-height: 40px !important;
+    }
+  }
+}
