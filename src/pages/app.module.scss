@@ -1,0 +1,15 @@
+@use 'src/styles/constants/colors';
+
+.appWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.app {
+  width: 360px;
+  height: 720px;
+  overflow-y: auto;
+  border: 1px solid colors.$black;
+}
