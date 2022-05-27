@@ -1,14 +1,3 @@
-import {
-  BmiIcon,
-  BloodPressureIcon,
-  CholesterolIcon,
-  SmokeIcon,
-  FastingBloodSugerIcon,
-  DrinkIcon,
-  GFRIcon,
-  ExerciseIcon,
-} from 'assets/svgs';
-
 export const keyList = [
   'resBMI',
   'resBloodPressure',
@@ -62,15 +51,4 @@ export const explainList = [
   '-- 입니다.',
   '신사구체여과율은 -mL/min로- 입니다.',
   '-- 을 하고 있습니다.',
-];
-
-export const iconList = [
-  BmiIcon,
-  BloodPressureIcon,
-  CholesterolIcon,
-  SmokeIcon,
-  FastingBloodSugerIcon,
-  DrinkIcon,
-  GFRIcon,
-  ExerciseIcon,
 ];
