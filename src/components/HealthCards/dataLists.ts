@@ -1,12 +1,12 @@
 import {
-  CardIcon1,
-  CardIcon2,
-  CardIcon3,
-  CardIcon4,
-  CardIcon5,
-  CardIcon6,
-  CardIcon7,
-  CardIcon8,
+  BmiIcon,
+  BloodPressureIcon,
+  CholesterolIcon,
+  SmokeIcon,
+  FastingBloodSugerIcon,
+  DrinkIcon,
+  GFRIcon,
+  ExerciseIcon,
 } from 'assets/svgs';
 
 export const keyList = [
@@ -14,21 +14,21 @@ export const keyList = [
   'resBloodPressure',
   'resTotalCholesterol',
   'smkQty',
-  'drnkQty',
   'resFastingBloodSuger',
+  'drnkQty',
   'resGFR',
   'exerciQty',
 ];
 
 export const colors = [
-  '#58BB3B',
+  '#13BF13',
   '#AA3DD3',
   '#788CF4',
   '#6A98E7',
-  '#9F44BE',
-  '#F4BB63',
-  '#EEB8B6',
-  '#8DD1C8',
+  '#BA30DB',
+  '#FE9602',
+  '#F88484',
+  '#45C9B9',
 ];
 
 export const normalVal = [
@@ -38,8 +38,8 @@ export const normalVal = [
   '',
   '정상 : 69~99 mg/dL',
   '',
-  '',
   '정상 : 60 mL/min 이상',
+  '',
 ];
 
 export const nameList = [
@@ -53,13 +53,24 @@ export const nameList = [
   '운동량',
 ];
 
+export const explainList = [
+  '체질량지수는 -kg/m²로- 입니다.',
+  '혈압은 -mmHg로- 입니다.',
+  '총 콜레스트롤은 -mg/dL로- 입니다.',
+  '-- 중입니다.',
+  '식전혈당은 -mg/dL로- 입니다.',
+  '-- 입니다.',
+  '신사구체여과율은 -mL/min로- 입니다.',
+  '-- 을 하고 있습니다.',
+];
+
 export const iconList = [
-  CardIcon1,
-  CardIcon2,
-  CardIcon3,
-  CardIcon4,
-  CardIcon5,
-  CardIcon6,
-  CardIcon7,
-  CardIcon8,
+  BmiIcon,
+  BloodPressureIcon,
+  CholesterolIcon,
+  SmokeIcon,
+  FastingBloodSugerIcon,
+  DrinkIcon,
+  GFRIcon,
+  ExerciseIcon,
 ];

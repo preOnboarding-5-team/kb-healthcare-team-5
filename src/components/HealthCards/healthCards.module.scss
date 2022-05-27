@@ -1,75 +1,96 @@
+@use '/src/styles/constants/colors';
+
 .healthCards {
-  width: 400px;
-  border: 1px solid black;
-  border-radius: 10px;
+  width: 320px;
   padding: 35px 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: rgb(99 99 99 / 20%) 0 2px 8px 0;
 
   .topContent {
-    width: 360px;
-
     display: flex;
     justify-content: space-between;
+    width: 280px;
+    color: colors.$title-number;
 
     p {
       margin-top: 35px;
-      font-size: 30px;
-      font-weight: 700;
+      font-size: 25px;
       font-style: oblique;
+      font-weight: 700;
       letter-spacing: 1px;
     }
   }
 
   .title {
-    font-size: 25px;
+    margin: 5px 0 20px;
+    font-size: 20px;
     font-weight: 700;
-    margin: 20px 0 30px;
+    letter-spacing: 0.1px;
   }
 
   .explain {
-    font-size: 17px;
-    font-weight: 300;
-    line-height: 25px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    color: colors.$title-number;
+    letter-spacing: 0.1px;
+
     mark {
-      background-color: transparent;
       font-weight: 700;
+      color: colors.$title-number;
+      background-color: transparent;
     }
   }
 
-  .addExplain {
-    font-size: 15px;
-    font-weight: 300;
+  .normalValue {
+    margin: 10px 0;
+    font-size: 12px;
+    font-weight: 400;
     line-height: 25px;
-    color: grey;
-    margin: 10px 0 15px;
+    color: colors.$explain-font;
+    letter-spacing: 0.1px;
   }
 
   .hashtagWrap {
-    margin-bottom: 50px;
+    margin: 20px 0 50px;
+
     :first-child {
-      background-color: #fedbe0 !important;
+      background-color: colors.$hashtag-first !important;
     }
+
     .hashtag {
       width: 90px;
-      padding: 8px 15px;
-      font-size: 15px;
-      font-weight: 500;
+      padding: 5px 15px;
+      margin-right: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      color: colors.$hashtag-font;
+      letter-spacing: 0.1px;
+      background-color: colors.$hashtag-other;
       border-radius: 15px;
-      color: grey;
-      background-color: lightgray;
     }
+  }
+
+  hr {
+    background-color: colors.$section-line;
+    border: 0.1px solid colors.$section-line;
   }
 
   .recommend {
-    font-size: 18px;
-    font-weight: 700;
     margin: 40px 0 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1px;
   }
 
   ul {
-    margin-left: 20px;
+    margin-left: 13px;
+
     li {
+      margin-bottom: 10px;
+      line-height: 20px !important;
       list-style-type: disc;
-      line-height: 40px !important;
     }
   }
 }

@@ -1,7 +1,16 @@
-import { colors, keyList, nameList, normalVal } from './dataLists';
+import { colors, keyList, nameList, normalVal, explainList } from './dataLists';
 import styles from './healthCards.module.scss';
-
-import data from './response.json';
+import {
+  BmiIcon,
+  BloodPressureIcon,
+  CholesterolIcon,
+  DrinkIcon,
+  SmokeIcon,
+  GFRIcon,
+  FastingBloodSugerIcon,
+  ExerciseIcon,
+} from '../../assets/svgs';
+import data from '../../data/response.json';
 
 type ObjType = {
   [key: string]: string;
@@ -9,35 +18,47 @@ type ObjType = {
 
 function HealthCards() {
   const bojData: ObjType = data.wxcResultMap.boj;
+  const paramMapData: ObjType = data.wxcResultMap.paramMap;
 
   const list = keyList.map((item, idx) => {
     const tag = data.healthTagList[idx];
     const infoArr = bojData[item].split(' - ');
     const color = colors[idx];
+    const explain = explainList[idx].split('-');
+
+    const healthIcon = {
+      resBMI: <BmiIcon />,
+      resBloodPressure: <BloodPressureIcon />,
+      resTotalCholesterol: <CholesterolIcon />,
+      smkQty: <SmokeIcon />,
+      drnkQty: <DrinkIcon />,
+      resFastingBloodSuger: <FastingBloodSugerIcon />,
+      resGFR: <GFRIcon />,
+      exerciQty: <ExerciseIcon />,
+    }[item];
 
     return (
       <div key={item} className={styles.healthCards}>
         <div className={styles.topContent}>
           <p>0{idx + 1}</p>
-          <img
-            // eslint-disable-next-line global-require,  import/no-dynamic-require
-            src={require(`assets/svgs/health/ic-icon-mission-h-${idx + 1}.svg`)}
-            className={styles.icon}
-            alt={`${idx + 1}`}
-          />
+          {healthIcon}
         </div>
 
         <h1 style={{ color: `${color}` }} className={styles.title}>
           {nameList[idx]}
         </h1>
-
+        {normalVal[idx] && (
+          <p className={styles.explain}>
+            {explain[0]}
+            {paramMapData[item]}
+            {explain[1]}
+          </p>
+        )}
         <p className={styles.explain}>
-          {normalVal[idx]}
-          <br /> <mark>{infoArr[0]}</mark> 입니다.
+          <mark>{infoArr[0]}</mark>
+          {explain[2]}
         </p>
-        <p className={styles.addExplain}>
-          정상 : 이완 60~80 / 수축 90~120 mmHg
-        </p>
+        <p className={styles.normalValue}>{normalVal[idx]}</p>
 
         <div className={styles.hashtagWrap}>
           {tag.tag1 && <span className={styles.hashtag}>#{tag.tag1}</span>}
