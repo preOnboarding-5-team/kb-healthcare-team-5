@@ -1,4 +1,4 @@
-import { HealthIcon } from 'assets/svgs';
+import { colors, keyList, nameList, normalVal } from './dataLists';
 import styles from './healthCards.module.scss';
 
 import data from './response.json';
@@ -9,61 +9,50 @@ type ObjType = {
 
 function HealthCards() {
   const bojData: ObjType = data.wxcResultMap.boj;
-  const normal = [
-    '정상 : 18.5 ~ 22.9 kg/㎡ ',
-    '정상 : 이완 60~79 / 수축 90~119 mmHg',
-    '정상 : 200 mg/dL 이하',
-    '',
-    '정상 : 69~99 mg/dL',
-    '',
-    '',
-    '정상 : 60 mL/min 이상',
-  ];
 
-  const keyList = [
-    'resBMI',
-    'resBloodPressure',
-    'resTotalCholesterol',
-    'smkQty',
-    'drnkQty',
-    'resFastingBloodSuger',
-    'resGFR',
-    'exerciQty',
-  ];
   const list = keyList.map((item, idx) => {
     const tag = data.healthTagList[idx];
     const infoArr = bojData[item].split(' - ');
+    const color = colors[idx];
 
     return (
       <div key={item} className={styles.healthCards}>
         <div className={styles.topContent}>
-          <p>`0${idx}`</p>
-          <HealthIcon className={styles.icon} />
+          <p>0{idx + 1}</p>
+          <img
+            // eslint-disable-next-line global-require,  import/no-dynamic-require
+            src={require(`assets/svgs/health/ic-icon-mission-h-${idx + 1}.svg`)}
+            className={styles.icon}
+            alt={`${idx + 1}`}
+          />
         </div>
 
-        <h1 className={styles.title}>{infoArr[0]}</h1>
+        <h1 style={{ color: `${color}` }} className={styles.title}>
+          {nameList[idx]}
+        </h1>
 
         <p className={styles.explain}>
-          {normal[idx]}
-          <br /> <mark>정상</mark> 입니다.
+          {normalVal[idx]}
+          <br /> <mark>{infoArr[0]}</mark> 입니다.
         </p>
         <p className={styles.addExplain}>
           정상 : 이완 60~80 / 수축 90~120 mmHg
         </p>
 
         <div className={styles.hashtagWrap}>
-          <div>
-            <span className={styles.hashtag}>{tag.tag1}</span>
-            <span className={styles.hashtag}>{tag.tag2}</span>
-            <span className={styles.hashtag}>{tag.tag3}</span>
-          </div>
+          {tag.tag1 && <span className={styles.hashtag}>#{tag.tag1}</span>}
+          {tag.tag2 && <span className={styles.hashtag}>#{tag.tag2}</span>}
+          {tag.tag3 && <span className={styles.hashtag}>#{tag.tag3}</span>}
         </div>
 
         <hr />
 
-        <h2 className={styles.recommend}>이렇게 관리해 보세요!</h2>
+        <h2 style={{ color: `${color}` }} className={styles.recommend}>
+          이렇게 관리해 보세요!
+        </h2>
         <ul>
           <li className={styles.explain}>{infoArr[1]}</li>
+          {infoArr[2] && <li className={styles.explain}>{infoArr[2]}</li>}
         </ul>
       </div>
     );

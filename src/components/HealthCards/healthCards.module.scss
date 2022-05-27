@@ -23,7 +23,6 @@
     font-size: 25px;
     font-weight: 700;
     margin: 20px 0 30px;
-    color: purple;
   }
 
   .explain {
@@ -46,21 +45,23 @@
 
   .hashtagWrap {
     margin-bottom: 50px;
+    :first-child {
+      background-color: #fedbe0 !important;
+    }
     .hashtag {
       width: 90px;
       padding: 8px 15px;
       font-size: 15px;
       font-weight: 500;
       border-radius: 15px;
-      background-color: #fedbe0;
       color: grey;
+      background-color: lightgray;
     }
   }
 
   .recommend {
     font-size: 18px;
     font-weight: 700;
-    color: purple;
     margin: 40px 0 20px;
   }
 
