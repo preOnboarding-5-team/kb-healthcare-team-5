@@ -1,0 +1,137 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/position';
+
+.myHealth {
+  padding: 10px;
+
+  .logo {
+    padding-left: 10px;
+  }
+
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+
+    .title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      p {
+        font-weight: bold;
+      }
+
+      .icon {
+        margin-left: 8px;
+        fill: colors.$primary;
+      }
+    }
+
+    .canvas {
+      position: relative;
+
+      .score {
+        position: absolute;
+        font-size: 24px;
+        font-weight: bold;
+
+        @include position.center;
+      }
+    }
+
+    .date {
+      padding: 5px 0;
+      font-size: 11px;
+    }
+
+    .getResultButton {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      font-weight: bold;
+      color: colors.$black;
+    }
+
+    .scoreList {
+      position: fixed;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 450px;
+      padding: 6px 12px;
+      overflow: auto;
+      background: colors.$white;
+      border: 1px solid colors.$point;
+
+      @include position.center;
+
+      .closeButton {
+        align-self: flex-end;
+      }
+
+      .title {
+        margin-bottom: 10px;
+        font-size: 20px;
+      }
+
+      .scoreListItem {
+        width: 100%;
+        cursor: pointer;
+        user-select: none;
+        border: 1px solid colors.$black;
+
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+
+        div {
+          display: flex;
+          align-items: center;
+
+          &:not(:last-child) {
+            border-bottom: 1px solid colors.$black;
+          }
+
+          dt {
+            width: 30%;
+            padding: 4px 8px;
+          }
+
+          dd {
+            width: 70%;
+            padding: 4px 8px;
+            line-height: 1.25rem;
+            word-break: keep-all;
+            border-left: 1px solid colors.$black;
+          }
+        }
+      }
+    }
+
+    .infoContainer {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 13px;
+      background-color: colors.$gray-100;
+      border: 1px gray solid;
+      border-radius: 10px;
+
+      .info {
+        width: 30%;
+        text-align: center;
+      }
+
+      .detail {
+        display: flex;
+        justify-content: space-around;
+        width: 70%;
+      }
+    }
+  }
+}
