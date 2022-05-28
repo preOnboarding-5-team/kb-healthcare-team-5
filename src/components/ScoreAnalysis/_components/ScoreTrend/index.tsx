@@ -6,6 +6,7 @@ import styles from './scoreTrend.module.scss';
 export default function ScoreTrend() {
   const scoreTrendData = getScoreTrendData();
   const numData = scoreTrendData.length;
+
   const thisYear = scoreTrendData[numData - 1].label;
   const scoreDiff =
     scoreTrendData[numData - 1].value - scoreTrendData[numData - 2].value;
