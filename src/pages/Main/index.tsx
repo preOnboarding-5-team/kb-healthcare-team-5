@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import AnalysisResult from 'components/AnalysisResult';
-import styles from './main.module.scss';
-
-function Main() {
-  return (
-    <div className={styles.main}>
-      <AnalysisResult />
-=======
 import { useEffect, useRef } from 'react';
 import { HealthInfo } from 'data/index';
 import { InfoIcon } from 'assets';
@@ -89,7 +80,6 @@ function Main() {
         </div>
       </div>
       <ScoreAnalyze />
->>>>>>> 43464ac4e7cd18007ccb1f5a4edc2ff8e0af9d4f
     </div>
   );
 }
