@@ -9,7 +9,7 @@ import {
   GFRIcon,
   FastingBloodSugerIcon,
   ExerciseIcon,
-} from '../../assets/svgs';
+} from '../../assets';
 import data from '../../data/response.json';
 
 type ObjType = {

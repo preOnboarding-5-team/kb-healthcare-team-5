@@ -1,4 +1,5 @@
 import StatusBar from 'components/StatusBar';
+import HealthCards from 'components/HealthCards';
 import styles from './app.module.scss';
 import Main from './Main';
 
@@ -8,6 +9,7 @@ function App() {
       <div className={styles.app}>
         <StatusBar />
         <Main />
+        <HealthCards />
       </div>
     </div>
   );
