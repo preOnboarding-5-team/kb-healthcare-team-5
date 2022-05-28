@@ -1,0 +1,95 @@
+@use '/src/styles/constants/colors';
+
+.healthCards {
+  width: 320px;
+  padding: 35px 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: rgb(99 99 99 / 20%) 0 2px 8px 0;
+
+  .topContent {
+    display: flex;
+    justify-content: space-between;
+    width: 280px;
+    color: colors.$title-number;
+
+    p {
+      margin-top: 35px;
+      font-size: 25px;
+      font-style: oblique;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+  }
+
+  .title {
+    margin: 5px 0 20px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.1px;
+  }
+
+  .explain {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    color: colors.$title-number;
+    letter-spacing: 0.1px;
+
+    mark {
+      font-weight: 700;
+      color: colors.$title-number;
+      background-color: transparent;
+    }
+  }
+
+  .normalValue {
+    margin: 10px 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 25px;
+    color: colors.$explain-font;
+    letter-spacing: 0.1px;
+  }
+
+  .hashtagWrap {
+    margin: 20px 0 50px;
+
+    :first-child {
+      background-color: colors.$hashtag-first !important;
+    }
+
+    .hashtag {
+      padding: 5px 12px;
+      margin-right: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      color: colors.$hashtag-font;
+      letter-spacing: 0.1px;
+      background-color: colors.$hashtag-other;
+      border-radius: 15px;
+    }
+  }
+
+  hr {
+    background-color: colors.$section-line;
+    border: 0.1px solid colors.$section-line;
+  }
+
+  .recommend {
+    margin: 40px 0 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1px;
+  }
+
+  ul {
+    margin-left: 13px;
+
+    li {
+      margin-bottom: 10px;
+      line-height: 20px !important;
+      list-style-type: disc;
+    }
+  }
+}
