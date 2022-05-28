@@ -1,4 +1,5 @@
 import ScoreChart from 'components/common/ScoreChart';
+import ScoreComment from 'components/common/ScoreComment';
 import styles from './scoreAnalyze.module.scss';
 
 const DUMMY = [
@@ -31,6 +32,17 @@ const DUMMY2 = [
   },
 ];
 
+const DUMMY4 = [
+  {
+    value: 93335,
+    label: '나',
+  },
+  {
+    value: 129455,
+    label: '10년 후',
+  },
+];
+
 export default function ScoreAnalyze() {
   return (
     <section className={styles.wrapper}>
@@ -44,6 +56,20 @@ export default function ScoreAnalyze() {
         className={styles.chart2}
         data={DUMMY2}
         highlightOn={DUMMY2.length - 1}
+        highlightPoint
+        pointStyle="circle"
+        padding={50}
+      />
+      <ScoreComment
+        data={DUMMY4}
+        baseComment="10년 후 예상 의료비는|현재 "
+        goodComment="원 많아요"
+        badComment="원 적어요"
+      />
+      <ScoreChart
+        className={styles.chart2}
+        data={DUMMY4}
+        highlightOn={0}
         highlightPoint
         pointStyle="circle"
         padding={50}
