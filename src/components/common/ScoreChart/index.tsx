@@ -55,7 +55,7 @@ export default function ScoreChart({
               [styles['label-highlight']]: highlight,
             })}
           >
-            {data[idx].value}
+            {data[idx].value.toLocaleString('en')}
           </p>
           <div
             className={cx(styles.point, styles[pointStyle], {
