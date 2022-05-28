@@ -1,13 +1,14 @@
+import MyHealth from 'components/MyHealth';
 import StatusBar from 'components/StatusBar';
+
 import styles from './app.module.scss';
-import Main from './Main';
 
 function App() {
   return (
     <div className={styles.appWrapper}>
-      <div className={styles.app}>
+      <div id="app" className={styles.app}>
         <StatusBar />
-        <Main />
+        <MyHealth />
       </div>
     </div>
   );
