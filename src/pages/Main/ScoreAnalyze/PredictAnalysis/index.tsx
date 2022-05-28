@@ -17,7 +17,7 @@ function PredictAnalysis(): JSX.Element {
   const hScoreGapColor =
     userHscore - lastPredictHscore > 0 ? '#d50000' : '#0026ca';
   const commentHScoreGap =
-    userHscore - lastPredictHscore > 0 ? '낮아요' : '높아요';
+    userHscore - lastPredictHscore > 0 ? '낮아요.' : '높아요.';
   const dataList = [
     {
       id: 1,
@@ -36,11 +36,12 @@ function PredictAnalysis(): JSX.Element {
       <div className={styles.commentWrapper}>
         <div className={styles.resultBox}>
           <p className={styles.standardComment}>
-            {predictHscore.length}년 후 예상 건강점수는
-          </p>
-          <p className={styles.gapComment} style={{ color: hScoreGapColor }}>
-            현재보다 {HScoreGap}점 {commentHScoreGap}{' '}
-            <span className={styles.mark} />
+            {predictHscore.length}년 후 예상 건강점수는 <br />
+            현재보다
+            <p className={styles.gapComment} style={{ color: hScoreGapColor }}>
+              {HScoreGap}점 {commentHScoreGap}
+              <span className={styles.mark} />
+            </p>
           </p>
         </div>
       </div>

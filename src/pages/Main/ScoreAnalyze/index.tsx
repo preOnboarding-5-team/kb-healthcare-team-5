@@ -1,6 +1,7 @@
 import ScoreChart from 'components/common/ScoreChart';
-import AverageAnalysis from './components/AverageAnalysis';
-import PredictAnalysis from './components/PredictAnalysis';
+import AverageAnalysis from './AverageAnalysis';
+import PredictAnalysis from './PredictAnalysis';
+import PredictExpense from './PredictExpense';
 import styles from './scoreAnalyze.module.scss';
 
 const DUMMY = [
@@ -39,6 +40,7 @@ export default function ScoreAnalyze() {
       />
       <AverageAnalysis />
       <PredictAnalysis />
+      <PredictExpense />
     </section>
   );
 }
