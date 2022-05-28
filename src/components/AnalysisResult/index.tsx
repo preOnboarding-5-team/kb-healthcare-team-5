@@ -1,19 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 import { HealthInfo } from 'data';
 
 import styles from './analysisResult.module.scss';
 
-function AnalysisResult() {
-  // const canvasRef = useRef<HTMLCanvasElement>(null);
-  // const canvas = canvasRef.current as HTMLCanvasElement;
-  // const ctx = canvas.getContext('2d');
-  // if (context) {
-  //   // 여기서 캔버스 사용
-  // }
-  const lineRef = useRef<HTMLDivElement>(null);
-  const pointMineRef = useRef<HTMLDivElement>(null);
-  const pointAverageRef = useRef<HTMLDivElement>(null);
+function AnalysisResult(): JSX.Element {
   const percentData = 100 - Number(HealthInfo.wxcResultMap.hscorePercent);
   const commentPercentData =
     percentData > 50 ? `하위 ${percentData}` : `상위 ${percentData}`;
@@ -34,63 +25,83 @@ function AnalysisResult() {
       ? peerHscore - userHscore
       : userHscore - peerHscore;
 
+  const hScoreGapColor = peerHscore - userHscore > 0 ? '#d50000' : '#0026ca';
   const commentHScoreGap = peerHscore - userHscore > 0 ? '낮아요' : '높아요';
 
-  // const [lineX, setLineX] = useState(null)
-  // const [lineY, setLineY] = useState(null)
+  const SCORE_MAX = 1000;
+  const SCORE_STANDARD = SCORE_MAX / 8;
+  const USER_SCORE_VIEW = Math.floor(
+    SCORE_STANDARD * (Number(userHscore) / SCORE_MAX)
+  );
+  const PEER_SCORE_VIEW = Math.floor(
+    SCORE_STANDARD * (Number(peerHscore) / SCORE_MAX)
+  );
 
-  // useEffect(() => {
-  //   console.log(lineRef.current?.getBoundingClientRect());
-  //   console.log(pointMineRef.current?.getBoundingClientRect());
-  //   console.log(pointAverageRef.current?.getBoundingClientRect());
-  //   point = pointMineRef.current?.getBoundingClientRect().x
-  //   lineRef.current?.
-  // }, []);
+  const graphArr = [
+    {
+      id: 1,
+
+      rectName: 'mineRect',
+      rectHeight: USER_SCORE_VIEW,
+      pointName: 'minePoint',
+      scoreName: 'mineScore',
+      score: userHscore,
+    },
+    {
+      id: 2,
+      rectName: 'peerRect',
+      rectHeight: PEER_SCORE_VIEW,
+      pointName: 'peerPoint',
+      scoreName: 'peerScore',
+      score: peerHscore,
+    },
+  ];
+
+  const graphList = graphArr.map((data) => {
+    const key = `graph-${data.id}`;
+    return (
+      <div className={styles.graph} key={key}>
+        <div
+          className={`${styles.rect} ${styles[data.rectName]}`}
+          style={{ height: data.rectHeight }}
+        >
+          <div className={`${styles.point} ${styles[data.pointName]}`} />
+          <p className={`${styles.score} ${styles[data.scoreName]}`}>
+            {data.score}
+          </p>
+        </div>
+      </div>
+    );
+  });
 
   return (
     <div className={styles.chartWrapper}>
-      <div className={styles.resultBox}>
-        <p className={`${styles.sentence}`}>
-          {convertUserAge}대 {commentUserSex} 평균점수보다
-          <br />
-          {HScoreGap}점 {commentHScoreGap}
-        </p>
-        <p className={styles.percentage}>
-          {commentPercentData} <span className={styles.mark} />
-        </p>
-      </div>
-      <div className={styles.chartBox}>
-        <div
-          // width={300}
-          // height={200}
-          className={styles.graphBox}
-          // ref={canvasRef}
-        >
-          <div className={styles.graph}>
-            <div className={`${styles.rect} ${styles.mineRect}`}>
-              <div
-                className={`${styles.point} ${styles.minePoint}`}
-                ref={pointMineRef}
-              />
-              <p className={`${styles.score} ${styles.mineScore}`}>652</p>
-            </div>
-          </div>
-          <div className={styles.graph}>
-            <div className={`${styles.rect} ${styles.averageRect}`}>
-              <div
-                className={`${styles.point} ${styles.averagePoint}`}
-                ref={pointAverageRef}
-              />
-              <p className={`${styles.score} ${styles.averageScore}`}>673</p>
-            </div>
-          </div>
-          <div className={styles.line} ref={lineRef} />
-        </div>
-        <div className={styles.textBox}>
+      <ul className={styles.resultBox}>
+        <li className={styles.sentenceBox}>
+          <p className={styles.standardComment}>
+            {convertUserAge}대 {commentUserSex} 평균점수보다
+          </p>
+          <p className={styles.gapComment} style={{ color: hScoreGapColor }}>
+            {HScoreGap}점 {commentHScoreGap} <span className={styles.mark} />
+          </p>
+        </li>
+        <li className={styles.percentage}>
+          <p className={styles.percentComment}>
+            {commentPercentData} <span className={styles.mark} />
+          </p>
+        </li>
+      </ul>
+
+      <ul className={styles.chartBox}>
+        <li className={styles.graphBox}>
+          {graphList}
+          <div className={styles.line} />
+        </li>
+        <li className={styles.textBox}>
           <p className={styles.text}>나</p>
           <p className={styles.text}>30대 남성</p>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   );
 }

@@ -8,22 +8,32 @@
     align-items: center;
     justify-content: space-between;
 
-    .percentage {
-      position: relative;
+    .sentenceBox {
+      line-height: 1.4;
 
-      .mark {
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        z-index: -1;
-        width: 100%;
-        height: 10px;
-        background: #ffdc65;
+      .gapComment {
+        position: relative;
+        display: inline;
       }
     }
 
-    .text {
+    .percentage {
       line-height: 1.4;
+
+      .percentComment {
+        position: relative;
+        display: inline;
+      }
+    }
+
+    .mark {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 10px;
+      background: #ffdc65;
     }
   }
 
@@ -40,6 +50,8 @@
       border-bottom: 1px solid #aaa;
 
       .graph {
+        width: 50%;
+
         .rect {
           position: relative;
           margin: 0 auto;
@@ -61,7 +73,7 @@
 
         .mineRect {
           width: 40px;
-          height: 100px;
+          height: 0;
           background: #fff176;
 
           .minePoint {
@@ -75,12 +87,12 @@
           }
         }
 
-        .averageRect {
+        .peerRect {
           width: 40px;
-          height: 120px;
+          height: 0;
           background: #ef5350;
 
-          .averagePoint {
+          .peerPoint {
             width: 6px;
             height: 6px;
             background: #131313;
@@ -103,11 +115,11 @@
       width: 100%;
       padding-top: 20px;
       text-align: center;
-    }
 
-    .graph,
-    .text {
-      width: 50%;
+      .text {
+        width: 50%;
+        line-height: 1.4;
+      }
     }
   }
 }
