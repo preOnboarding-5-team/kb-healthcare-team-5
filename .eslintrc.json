@@ -20,7 +20,7 @@
     "ecmaVersion": 13,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": ["react", "@typescript-eslint"],
   "settings": {
     "import/resolver": {
       "node": {
@@ -33,7 +33,6 @@
     "no-param-reassign": ["error", { "props": false }],
     "prefer-destructuring": ["error", { "object": true, "array": false }],
     "no-shadow": "off",
-    "@typescript-eslint/no-shadow": ["error"],
     "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
     "prettier/prettier": [
       "error",
@@ -44,8 +43,7 @@
       "ignorePackages",
       { "ts": "never", "tsx": "never" }
     ],
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": "off",
+    "no-use-before-define": "error",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": [
       "error",
@@ -60,14 +58,6 @@
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "jsx-a11y/click-events-have-key-events": "off",
-    "jsx-a11y/label-has-associated-control": [
-      "error",
-      {
-        "labelComponents": ["label"],
-        "labelAttributes": ["htmlFor"],
-        "controlComponents": ["input"]
-      }
-    ],
     "react/require-default-props": "off"
   }
 }
