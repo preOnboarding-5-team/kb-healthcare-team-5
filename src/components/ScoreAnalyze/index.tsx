@@ -34,19 +34,21 @@ const DUMMY2 = [
 export default function ScoreAnalyze() {
   return (
     <section className={styles.wrapper}>
-      <ScoreChart
-        className={styles.chart}
-        data={DUMMY}
-        highlightOn={DUMMY.length - 1}
-        padding={20}
-      />
-      <ScoreChart
-        className={styles.chart2}
-        data={DUMMY2}
-        highlightOn={DUMMY2.length - 1}
-        highlightPoint
-        padding={50}
-      />
+      <div className={styles['inner-wrapper']}>
+        <ScoreChart
+          className={styles.chart}
+          data={DUMMY}
+          highlightOn={DUMMY.length - 1}
+          padding={20}
+        />
+        <ScoreChart
+          className={styles.chart2}
+          data={DUMMY2}
+          highlightOn={DUMMY2.length - 1}
+          highlightPoint
+          padding={50}
+        />
+      </div>
     </section>
   );
 }

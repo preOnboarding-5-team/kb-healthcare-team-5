@@ -1,7 +1,7 @@
 import StatusBar from 'components/StatusBar';
 import styles from './app.module.scss';
 import Main from './Main';
-import ScoreAnalyze from './ScoreAnalyze';
+import ScoreAnalyze from '../components/ScoreAnalyze';
 
 function App() {
   return (
