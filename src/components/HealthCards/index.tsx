@@ -1,3 +1,4 @@
+import { HealthInfo } from 'data';
 import { colors, keyList, nameList, normalVal, explainList } from './dataLists';
 import styles from './healthCards.module.scss';
 import {
@@ -9,19 +10,18 @@ import {
   GFRIcon,
   FastingBloodSugerIcon,
   ExerciseIcon,
-} from '../../assets';
-import data from '../../data/response.json';
+} from '../../assets/svgs';
 
 type ObjType = {
   [key: string]: string;
 };
 
 function HealthCards() {
-  const bojData: ObjType = data.wxcResultMap.boj;
-  const paramMapData: ObjType = data.wxcResultMap.paramMap;
+  const bojData: ObjType = HealthInfo.wxcResultMap.boj;
+  const paramMapData: ObjType = HealthInfo.wxcResultMap.paramMap;
 
   const list = keyList.map((item, idx) => {
-    const tag = data.healthTagList[idx];
+    const tag = HealthInfo.healthTagList[idx];
     const infoArr = bojData[item].split(' - ');
     const color = colors[idx];
     const explain = explainList[idx].split('-');
