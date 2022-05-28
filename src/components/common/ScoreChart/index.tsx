@@ -3,6 +3,7 @@ import { useRectBound } from './hooks';
 import styles from './scoreChart.module.scss';
 
 const DEFAULT_BAR_SCALE = 0.4;
+const LABEL_TOP = 20;
 
 export default function ScoreChart({
   data,
@@ -10,7 +11,7 @@ export default function ScoreChart({
   highlightPoint = false,
   barScale = 1,
   axisColor = '#000',
-  pointStyle = 'square',
+  pointStyle = 'circle',
   padding = 0,
   className,
 }: ScoreChartProps) {
@@ -19,7 +20,10 @@ export default function ScoreChart({
   const values = data.map((datum) => (datum.value > 0 ? datum.value : 0));
   const maxValue = Math.max(...values);
   const divider = maxValue > 0 ? maxValue : 1;
-  const barHeights = values.map((value) => (boundHeight * value) / divider);
+  const barHeights = values.map(
+    (value) => Math.max(((boundHeight - 20) * value) / divider),
+    20
+  );
   const barSpacing =
     (boundWidth - padding * 2 - barWidth * data.length) / (data.length - 1);
 
@@ -30,17 +34,17 @@ export default function ScoreChart({
 
     return (
       <div className={styles['bar-wrapper']} style={{ height }} key={key}>
-        <p
-          className={cx(styles.label, {
-            [styles['label-highlight']]: highlight,
-          })}
-        >
-          {data[idx].value}
-        </p>
         <div
           className={cx(styles.bar, { [styles['bar-highlight']]: highlight })}
           style={{ width: barWidth }}
         >
+          <p
+            className={cx(styles.label, {
+              [styles['label-highlight']]: highlight,
+            })}
+          >
+            {data[idx].value}
+          </p>
           <div
             className={cx(styles.point, styles[pointStyle], {
               [styles['point-highlight']]: highlightPoint && highlight,
@@ -55,9 +59,8 @@ export default function ScoreChart({
   const lines = (() => {
     let x1 = padding - barWidth / 2 - barSpacing;
     let key;
-    const r = 10 / 11;
 
-    return barHeights.slice(0, data.length - 1).map((height, idx) => {
+    return barHeights.slice(0, data.length - 1).map((barHeight, idx) => {
       x1 += barSpacing + barWidth;
       key = `line-${idx}`;
 
@@ -65,9 +68,9 @@ export default function ScoreChart({
         <line
           key={key}
           x1={x1}
-          y1={boundHeight - height * r + 10}
+          y1={boundHeight - Math.max(0, barHeight - LABEL_TOP)}
           x2={x1 + barSpacing + barWidth}
-          y2={boundHeight - barHeights[idx + 1] * r + 10}
+          y2={boundHeight - Math.max(0, barHeights[idx + 1] - LABEL_TOP)}
         />
       );
     });

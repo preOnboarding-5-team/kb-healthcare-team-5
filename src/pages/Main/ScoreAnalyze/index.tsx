@@ -7,11 +7,11 @@ const DUMMY = [
     label: 2018,
   },
   {
-    value: 585,
+    value: 1000,
     label: 2019,
   },
   {
-    value: 100,
+    value: 200,
     label: 2020,
   },
   {
@@ -26,7 +26,7 @@ const DUMMY2 = [
     label: '나',
   },
   {
-    value: 673,
+    value: 100,
     label: '30대 남성',
   },
 ];
@@ -45,7 +45,6 @@ export default function ScoreAnalyze() {
         data={DUMMY2}
         highlightOn={DUMMY2.length - 1}
         highlightPoint
-        pointStyle="circle"
         padding={50}
       />
     </section>
