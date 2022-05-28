@@ -1,17 +1,15 @@
 .wrapper {
   width: 100%;
-  
-  .chart {
-    width: 80%;
-    height: 200px;
-    margin: 0 auto;
-    font-size: 15px;
-  }
 
-  .chart2 {
-    width: 80%;
-    height: 150px;
+  .inner-wrapper {
+    width: 95%;
     margin: 0 auto;
-    font-size: 14px;
+
+    .chart {
+      width: 90%;
+      height: 150px;
+      margin: 0 auto;
+      font-size: 10px;
+    }
   }
 }

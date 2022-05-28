@@ -4,6 +4,7 @@ import styles from './scoreChart.module.scss';
 
 const DEFAULT_BAR_SCALE = 0.4;
 const LABEL_TOP = 20;
+const CHART_HEIGHT_RATIO = 6 / 7;
 
 interface ScoreChartProps {
   data: ChartData[];
@@ -70,6 +71,7 @@ export default function ScoreChart({
   const lines = (() => {
     let x1 = padding - barWidth / 2 - barSpacing;
     let key;
+    const svgHeight = CHART_HEIGHT_RATIO * boundHeight + LABEL_TOP;
 
     return barHeights.slice(0, data.length - 1).map((barHeight, idx) => {
       x1 += barSpacing + barWidth;
@@ -79,9 +81,9 @@ export default function ScoreChart({
         <line
           key={key}
           x1={x1}
-          y1={boundHeight - Math.max(0, barHeight - LABEL_TOP)}
+          y1={svgHeight - Math.max(LABEL_TOP, barHeight)}
           x2={x1 + barSpacing + barWidth}
-          y2={boundHeight - Math.max(0, barHeights[idx + 1] - LABEL_TOP)}
+          y2={svgHeight - Math.max(LABEL_TOP, barHeights[idx + 1])}
         />
       );
     });
@@ -104,11 +106,14 @@ export default function ScoreChart({
   });
 
   return (
-    <div className={cx(styles.wrapper, className)}>
+    <div className={cx(styles.wrapper, className)} ref={boundRef}>
       <div
-        className={styles['inner-wrapper']}
-        style={{ padding: `0 ${padding}px` }}
-        ref={boundRef}
+        className={styles['bars-wrapper']}
+        style={{
+          margin: `0 ${padding}px`,
+          width: boundWidth - 2 * padding - barWidth,
+          height: boundHeight - LABEL_TOP,
+        }}
       >
         {bars}
       </div>
@@ -121,7 +126,7 @@ export default function ScoreChart({
       >
         {tickLabels}
       </div>
-      <svg className={styles.lines} width={boundWidth} height={boundHeight}>
+      <svg className={styles.lines} width={boundWidth}>
         {lines}
       </svg>
     </div>
