@@ -1,4 +1,5 @@
-import type { Dispatch, SetStateAction } from 'react';
+import { useRef } from 'react';
+import type { Dispatch, SetStateAction, MouseEvent } from 'react';
 import { HealthInfo } from 'data';
 import styles from './detail.module.scss';
 
@@ -7,18 +8,33 @@ interface DetailProps {
 }
 
 function Detail({ setDetail }: DetailProps) {
-  const handleClickButton = () => {
+  const outerRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOuterArea = (e: MouseEvent<HTMLDivElement>) => {
+    if (outerRef.current && e.target === outerRef.current) {
+      setDetail(false);
+    }
+  };
+
+  const handleClickClose = () => {
     setDetail(false);
   };
+
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.contentWrapper}>
+    <div
+      className={styles.wrapper}
+      ref={outerRef}
+      onClick={handleClickOuterArea}
+      role="button"
+      tabIndex={-1}
+    >
+      <article className={styles.contentWrapper}>
         <h1>건강 검진 결과</h1>
         <button
           type="button"
           className={styles.back}
           aria-label="뒤로 가기"
-          onClick={handleClickButton}
+          onClick={handleClickClose}
         >
           뒤로 가기
         </button>
@@ -30,7 +46,7 @@ function Detail({ setDetail }: DetailProps) {
             </div>
           )
         )}
-      </div>
+      </article>
     </div>
   );
 }
