@@ -9,6 +9,7 @@ export default function ScoreTrend() {
   const thisYear = scoreTrendData[numData - 1].label;
   const scoreDiff =
     scoreTrendData[numData - 1].value - scoreTrendData[numData - 2].value;
+
   const firstLine = `${numData < 2 ? `${thisYear}년 ` : ''}건강 점수는`;
   const secondLine = (() => {
     if (numData < 2) return `${scoreTrendData[0].value}점 입니다.`;
@@ -31,7 +32,7 @@ export default function ScoreTrend() {
 
   return (
     <>
-      <div className={styles['comment-wrapper']}>
+      <div className={styles.commentWrapper}>
         <p>{firstLine}</p>
         <p className={styles.gapComment}>{secondLine}</p>
       </div>
