@@ -26,22 +26,22 @@ function MyHealth() {
     const ctx = canvas ? canvas.getContext('2d') : null;
     if (ctx) {
       ctx.beginPath();
-      ctx.lineWidth = 5;
-      ctx.strokeStyle = '#dcdcdc';
+      ctx.lineWidth = 13;
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = '#f3f4f6';
 
-      ctx.arc(55, 55, 50, Math.PI * 0.7, Math.PI * 2.3);
+      ctx.arc(150, 80, 70, Math.PI * 0.8, Math.PI * 2.2);
       ctx.stroke();
 
       ctx.beginPath();
-      ctx.lineWidth = 5;
-      ctx.strokeStyle = '#fdb913';
+      ctx.strokeStyle = '#ffd300';
 
       ctx.arc(
-        55,
-        55,
-        50,
-        Math.PI * 0.7,
-        (Math.PI * 2.3 * Number(healthScore)) / 1000
+        150,
+        80,
+        70,
+        Math.PI * 0.8,
+        (Math.PI * 2.2 * Number(healthScore)) / 1000
       );
       ctx.stroke();
     }
@@ -53,15 +53,18 @@ function MyHealth() {
 
   return (
     <section className={styles.myHealth}>
-      <p className={styles.logo}>마이 헬스</p>
+      <p className={styles.logo}>마이헬스</p>
       <div className={styles.wrap}>
         <div className={styles.title}>
-          <p>김헬스 건강점수</p>
+          <p>김헬스님의 건강점수</p>
           <InfoIcon className={styles.icon} />
         </div>
-        <div className={styles.canvas}>
-          <canvas width="110px" height="100px" ref={canvasRef} />
-          <h1 className={styles.score}>{healthScore}</h1>
+        <div className={styles.canvasContainer}>
+          <canvas className={styles.canvas} ref={canvasRef} />
+          <h1 className={styles.score}>
+            {healthScore}
+            <span className={styles.text}>점</span>
+          </h1>
         </div>
         <p className={styles.date}>{healthDate}</p>
         <button
@@ -70,13 +73,13 @@ function MyHealth() {
           onClick={toggleModal}
         >
           건강검진결과 가져오기
-          <ChevronRightIcon />
+          <ChevronRightIcon fill="#4b5563" />
         </button>
         {modalShown && <ScoreList toggleModal={toggleModal} />}
         <div className={styles.infoContainer}>
           <p className={styles.info}>기본정보</p>
           <div className={styles.detail}>
-            <span>{sex === '1' ? '남' : '여'}</span>
+            <span>{sex === '1' ? '남성' : '여성'}</span>
             <span>{age}세 </span>
             <span>{resHeight}cm</span>
           </div>
