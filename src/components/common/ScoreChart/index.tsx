@@ -6,7 +6,7 @@ const DEFAULT_BAR_SCALE = 0.4;
 const LABEL_TOP = 20;
 
 interface ScoreChartProps {
-  data: { label: string | number; value: number }[];
+  data: ChartData[];
   highlightOn: number | string;
   highlightPoint?: boolean;
   barScale?: number;
