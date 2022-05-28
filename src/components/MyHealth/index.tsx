@@ -1,22 +1,27 @@
-import { useEffect, useRef } from 'react';
-import { HealthInfo } from 'data/indext';
-import { setMaxListeners } from 'events';
-import { InfoIcon } from 'assets';
-import styles from './main.module.scss';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-function Main() {
+import { ChevronRightIcon, InfoIcon } from 'assets/svgs';
+import { HealthInfo } from 'data';
+import { formatFlatDate } from 'utils';
+
+import ScoreList from './ScoreList';
+
+import styles from './myHealth.module.scss';
+
+function MyHealth() {
+  const [modalShown, setModalShown] = useState<boolean>(false);
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
   const { healthScore } = HealthInfo.userInfo;
-  let { healthDate } = HealthInfo.userInfo;
   const { sex, age, resHeight } = HealthInfo.wxcResultMap.paramMap;
+  const healthDate = formatFlatDate(HealthInfo.userInfo.healthDate);
 
-  healthDate = `${healthDate.substring(0, 4)}.${healthDate.substring(
-    4,
-    6
-  )}.${healthDate.substring(6)}`;
+  const toggleModal = () => {
+    setModalShown((prev) => !prev);
+  };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  function drawCanvas() {
+  const drawCanvas = useCallback(() => {
     const canvas = canvasRef.current;
     const ctx = canvas ? canvas.getContext('2d') : null;
     if (ctx) {
@@ -40,18 +45,18 @@ function Main() {
       );
       ctx.stroke();
     }
-  }
+  }, [healthScore]);
 
   useEffect(() => {
     drawCanvas();
   }, [drawCanvas]);
 
   return (
-    <div className={styles.main}>
+    <section className={styles.myHealth}>
       <p className={styles.logo}>마이 헬스</p>
       <div className={styles.wrap}>
         <div className={styles.title}>
-          <h1>김국민님의 건강점수</h1>
+          <p>김헬스 건강점수</p>
           <InfoIcon className={styles.icon} />
         </div>
         <div className={styles.canvas}>
@@ -59,28 +64,26 @@ function Main() {
           <h1 className={styles.score}>{healthScore}</h1>
         </div>
         <p className={styles.date}>{healthDate}</p>
-        <a href="/" className={styles.link}>
+        <button
+          type="button"
+          className={styles.getResultButton}
+          onClick={toggleModal}
+        >
           건강검진결과 가져오기
-          <span className={styles.arrow} />
-        </a>
-        <div className={styles.info}>
-          <p>기본정보</p>
+          <ChevronRightIcon />
+        </button>
+        {modalShown && <ScoreList toggleModal={toggleModal} />}
+        <div className={styles.infoContainer}>
+          <p className={styles.info}>기본정보</p>
           <div className={styles.detail}>
             <span>{sex === '1' ? '남' : '여'}</span>
             <span>{age}세 </span>
             <span>{resHeight}cm</span>
           </div>
         </div>
-        <div className={styles.result}>
-          <p className={styles.date}>건강점수 분석 결과</p>
-          <a href="/" className={styles.link}>
-            결과 자세히 보기
-            <span className={styles.arrow} />
-          </a>
-        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
-export default Main;
+export default MyHealth;
