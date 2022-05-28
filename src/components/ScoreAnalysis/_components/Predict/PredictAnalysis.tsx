@@ -1,7 +1,6 @@
 import cx from 'classnames';
 import { HealthInfo } from 'data';
-
-import ScoreChart from 'components/common/ScoreChart';
+import BinaryChart from '../_shared/BinaryChart';
 import styles from './predict.module.scss';
 
 function PredictAnalysis(): JSX.Element {
@@ -56,13 +55,7 @@ function PredictAnalysis(): JSX.Element {
         </div>
       </div>
 
-      <ScoreChart
-        className={styles.chart}
-        data={dataList}
-        highlightOn={dataList[0].id - 1}
-        highlightPoint
-        padding={50}
-      />
+      <BinaryChart className={styles.chart} dataList={dataList} />
     </>
   );
 }

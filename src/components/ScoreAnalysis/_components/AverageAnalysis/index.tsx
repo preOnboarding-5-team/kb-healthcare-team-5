@@ -1,8 +1,7 @@
 import cx from 'classnames';
 import { HealthInfo } from 'data';
-
-import ScoreChart from 'components/common/ScoreChart';
 import styles from './averageAnalysis.module.scss';
+import BinaryChart from '../_shared/BinaryChart';
 
 function AverageAnalysis(): JSX.Element {
   const percentData = 100 - Number(HealthInfo.wxcResultMap.hscorePercent);
@@ -69,14 +68,7 @@ function AverageAnalysis(): JSX.Element {
         </ul>
       </div>
 
-      <ScoreChart
-        className={styles.chart}
-        data={dataList}
-        highlightOn={dataList[0].id - 1}
-        highlightPoint
-        padding={50}
-        pointStyle="circle"
-      />
+      <BinaryChart className={styles.chart} dataList={dataList} />
     </>
   );
 }

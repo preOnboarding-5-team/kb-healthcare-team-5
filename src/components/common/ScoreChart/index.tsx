@@ -44,21 +44,21 @@ export default function ScoreChart({
     const highlight = highlightOn === idx || highlightOn === data[idx].label;
 
     return (
-      <div className={styles['bar-wrapper']} style={{ height }} key={key}>
+      <div className={styles.barWrapper} style={{ height }} key={key}>
         <div
-          className={cx(styles.bar, { [styles['bar-highlight']]: highlight })}
+          className={cx(styles.bar, { [styles.barHighlight]: highlight })}
           style={{ width: barWidth }}
         >
           <p
             className={cx(styles.label, {
-              [styles['label-highlight']]: highlight,
+              [styles.labelHighlight]: highlight,
             })}
           >
             {data[idx].value.toLocaleString('en')}
           </p>
           <div
             className={cx(styles.point, styles[pointStyle], {
-              [styles['point-highlight']]: highlightPoint && highlight,
+              [styles.pointHighlight]: highlightPoint && highlight,
             })}
             style={{ left: barWidth / 2 }}
           />
@@ -93,7 +93,7 @@ export default function ScoreChart({
     return (
       <p
         key={key}
-        className={styles['tick-label']}
+        className={styles.tickLabel}
         style={{
           minWidth: barWidth,
           maxWidth: barWidth + barSpacing,
@@ -107,7 +107,7 @@ export default function ScoreChart({
   return (
     <div className={cx(styles.wrapper, className)} ref={boundRef}>
       <div
-        className={styles['bars-wrapper']}
+        className={styles.barsWrapper}
         style={{
           margin: `0 ${padding}px`,
           width: boundWidth - 2 * padding - barWidth,
@@ -117,7 +117,7 @@ export default function ScoreChart({
         {bars}
       </div>
       <div
-        className={cx(styles['tick-labels'])}
+        className={cx(styles.tickLabels)}
         style={{
           borderTop: `1px solid ${axisColor}`,
           padding: `0 ${padding}px`,

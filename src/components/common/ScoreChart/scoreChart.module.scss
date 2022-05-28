@@ -7,7 +7,7 @@
   grid-template-rows: 6fr 1fr;
   color: colors.$gray-900;
   
-  .bars-wrapper {
+  .barsWrapper {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -15,7 +15,7 @@
     margin: 0 auto;
   }
 
-  .bar-wrapper {
+  .barWrapper {
     position: relative;
 
     .bar {
@@ -38,13 +38,13 @@
         text-align: center;
       }
 
-      .label-highlight {
+      .labelHighlight {
         font-weight: 700;
         color: colors.$gray-900;
       }
     }
 
-    .bar-highlight {
+    .barHighlight {
       background-color: colors.$primary;
     }
 
@@ -68,13 +68,13 @@
       transform: translateY(-50%) translateX(-50%) rotate(40deg);
     }
     
-    .point-highlight {
+    .pointHighlight {
       background-color: colors.$gray-900;
       border: none;
     }
   }
 
-  .tick-labels {
+  .tickLabels {
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -82,7 +82,7 @@
     width: 100%;
     height: 100%;
 
-    .tick-label {
+    .tickLabel {
       position: relative;
       margin-top: 10px;
       text-align: center;

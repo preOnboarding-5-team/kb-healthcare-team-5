@@ -1,5 +1,30 @@
 .wrapper {
+  position: relative;
   width: 100%;
+
+  .titleWrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    margin: 50px 28px 30px;
+
+    .title {
+      font-weight: 700;
+      line-height: 30px;
+    }
+
+    .detail {
+      text-decoration: underline;
+    }
+  }
+
+  .resultTitle {
+    position: relative;
+    top: 110px;
+    margin-bottom: 160px;
+    margin-left: 28px;
+    font-weight: 700;
+  }
 
   .chart {
     width: 80%;

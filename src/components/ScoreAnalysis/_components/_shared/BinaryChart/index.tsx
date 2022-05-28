@@ -5,7 +5,7 @@ interface CompareChartProps {
   dataList: ChartData[];
 }
 
-export default function CompareChart({
+export default function BinaryChart({
   className,
   dataList,
 }: CompareChartProps) {
