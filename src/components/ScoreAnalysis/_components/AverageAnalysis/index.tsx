@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import { HealthInfo } from 'data';
 
 import ScoreChart from 'components/common/ScoreChart';
@@ -19,13 +20,21 @@ function AverageAnalysis(): JSX.Element {
 
   const userHscore = Number(HealthInfo.wxcResultMap.wHscore);
   const peerHscore = Number(HealthInfo.wxcResultMap.hscore_peer);
-  const HScoreGap =
-    peerHscore - userHscore > 0
-      ? peerHscore - userHscore
-      : userHscore - peerHscore;
+  const HScoreGap = Math.abs(peerHscore - userHscore);
 
-  const hScoreGapColor = peerHscore - userHscore > 0 ? '#d50000' : '#0026ca';
-  const commentHScoreGap = peerHscore - userHscore > 0 ? '낮아요' : '높아요';
+  let commentHScoreGap;
+  let hScoreGapClassName;
+
+  if (userHscore - peerHscore > 0) {
+    commentHScoreGap = `${HScoreGap}점 높아요.`;
+    hScoreGapClassName = styles.higher;
+  } else if (userHscore - peerHscore < 0) {
+    commentHScoreGap = `${HScoreGap}점 낮아요.`;
+    hScoreGapClassName = styles.lower;
+  } else {
+    commentHScoreGap = '같아요.';
+    hScoreGapClassName = '';
+  }
 
   const dataList = [
     {
@@ -48,8 +57,8 @@ function AverageAnalysis(): JSX.Element {
             <p className={styles.standardComment}>
               {convertUserAge}대 {commentUserSex} 평균점수보다
             </p>
-            <p className={styles.gapComment} style={{ color: hScoreGapColor }}>
-              {HScoreGap}점 {commentHScoreGap} <span className={styles.mark} />
+            <p className={cx(styles.gapComment, hScoreGapClassName)}>
+              {commentHScoreGap} <span className={styles.mark} />
             </p>
           </li>
           <li className={styles.percentage}>
@@ -61,7 +70,7 @@ function AverageAnalysis(): JSX.Element {
       </div>
 
       <ScoreChart
-        className={styles.chart2}
+        className={styles.chart}
         data={dataList}
         highlightOn={dataList[0].id - 1}
         highlightPoint

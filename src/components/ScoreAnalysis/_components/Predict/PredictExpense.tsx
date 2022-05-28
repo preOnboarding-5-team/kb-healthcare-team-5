@@ -1,7 +1,8 @@
+import cx from 'classnames';
 import { HealthInfo } from 'data';
 
 import ScoreChart from 'components/common/ScoreChart';
-import styles from './predictExpense.module.scss';
+import styles from './predict.module.scss';
 
 function PredictExpense(): JSX.Element {
   const userMedi = Number(HealthInfo.wxcResultMap.medi);
@@ -14,10 +15,21 @@ function PredictExpense(): JSX.Element {
       ? lastPredictMedi - userMedi
       : userMedi - lastPredictMedi;
 
-  const hScoreGapColor = userMedi - lastPredictMedi > 0 ? '#0026ca' : '#d50000';
-  const commentHScoreGap =
-    userMedi - lastPredictMedi > 0 ? '많아요.' : '적어요.';
-  const dataList = [
+  let commentHScoreGap;
+  let hScoreGapClassName;
+
+  if (userMedi - lastPredictMedi > 0) {
+    commentHScoreGap = `${HScoreGap.toLocaleString('en')}원 적어요.`;
+    hScoreGapClassName = styles.higher;
+  } else if (userMedi - lastPredictMedi < 0) {
+    commentHScoreGap = `${HScoreGap.toLocaleString('en')}원 많아요.`;
+    hScoreGapClassName = styles.lower;
+  } else {
+    commentHScoreGap = '같아요.';
+    hScoreGapClassName = '';
+  }
+
+  const dataList: ChartData[] = [
     {
       id: 1,
       value: userMedi,
@@ -35,23 +47,24 @@ function PredictExpense(): JSX.Element {
       <div className={styles.commentWrapper}>
         <div className={styles.resultBox}>
           <p className={styles.standardComment}>
-            {predictMedi.length}년 후 예상 의료비는 <br />
-            현재보다
-            <p className={styles.gapComment} style={{ color: hScoreGapColor }}>
-              {HScoreGap.toLocaleString('en')}원 {commentHScoreGap}
+            {predictMedi.length}년 후 예상 의료비는
+          </p>
+          <p className={styles.gapComment}>
+            {`현재${userMedi - lastPredictMedi ? '보다' : '와'} `}
+            <mark className={cx(styles.score, hScoreGapClassName)}>
+              {commentHScoreGap}
               <span className={styles.mark} />
-            </p>
+            </mark>
           </p>
         </div>
       </div>
 
       <ScoreChart
-        className={styles.chart3}
+        className={styles.chart}
         data={dataList}
         highlightOn={dataList[0].id - 1}
         highlightPoint
         padding={50}
-        pointStyle="circle"
       />
     </>
   );

@@ -5,6 +5,7 @@
   position: relative;
   display: grid;
   grid-template-rows: 6fr 1fr;
+  color: colors.$gray-900;
   
   .bars-wrapper {
     display: flex;
@@ -21,17 +22,10 @@
       position: absolute;
       bottom: 0;
       height: max(calc(100% - 20px), 0px);
-      background-color: colors.$gray3;
+      background-color: colors.$gray-200;
       animation: 1s grow;
       animation-fill-mode: 'both';
       animation-delay: 50ms;
-
-      @keyframes grow {
-        from {
-          height: 0;
-        }
-        
-      }
 
       .label {
         position: absolute;
@@ -40,29 +34,29 @@
         left: 0;
         z-index: 100;
         height: 20px;
+        color: colors.$gray-300;
         text-align: center;
+      }
+
+      .label-highlight {
+        font-weight: 700;
+        color: colors.$gray-900;
       }
     }
 
     .bar-highlight {
-      background-color: colors.$bar-highlight;
-    }
-
-
-    .label-highlight {
-      color: colors.$label-highlight;
+      background-color: colors.$primary;
     }
 
     .point {
       position: absolute;
       top: 0;
       z-index: levels.$point;
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       background-color: colors.$black;
     }
 
-    
     .circle {
       background-color: colors.$white;
       border: 2px solid colors.$black;
@@ -75,7 +69,7 @@
     }
     
     .point-highlight {
-      background-color: colors.$label-highlight;
+      background-color: colors.$gray-900;
       border: none;
     }
   }
@@ -99,16 +93,17 @@
     position: absolute;
     bottom: 20px;
     height: calc(100% * 6 / 7);
-    animation: 1s line-grow;
+    animation: 1s grow;
 
     line {
       stroke: colors.$black;
     }
-
-    @keyframes line-grow {
-      from {
-        height: 0;
-      }
-    }
   }
+}
+
+@keyframes grow {
+  from {
+    height: 0;
+  }
+  
 }

@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { useRectBound } from './hooks';
+import { useRectBound } from './_hooks';
 import styles from './scoreChart.module.scss';
 
 const DEFAULT_BAR_SCALE = 0.4;
@@ -42,7 +42,6 @@ export default function ScoreChart({
   const bars = barHeights.map((height, idx) => {
     const key = `chart-${data[idx].label}-${idx}`;
     const highlight = highlightOn === idx || highlightOn === data[idx].label;
-    // const backgroundColor = highlight ? barColors.highlight : barColors.normal;
 
     return (
       <div className={styles['bar-wrapper']} style={{ height }} key={key}>
