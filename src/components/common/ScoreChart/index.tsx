@@ -5,6 +5,17 @@ import styles from './scoreChart.module.scss';
 const DEFAULT_BAR_SCALE = 0.4;
 const LABEL_TOP = 20;
 
+interface ScoreChartProps {
+  data: { label: string | number; value: number }[];
+  highlightOn: number | string;
+  highlightPoint?: boolean;
+  barScale?: number;
+  axisColor?: string;
+  pointStyle?: 'circle' | 'square';
+  padding?: number;
+  className?: string;
+}
+
 export default function ScoreChart({
   data,
   highlightOn,
@@ -115,15 +126,4 @@ export default function ScoreChart({
       </svg>
     </div>
   );
-}
-
-interface ScoreChartProps {
-  data: { label: string | number; value: number }[];
-  highlightOn: number | string;
-  highlightPoint?: boolean;
-  barScale?: number;
-  axisColor?: string;
-  pointStyle?: 'circle' | 'square';
-  padding?: number;
-  className?: string;
 }

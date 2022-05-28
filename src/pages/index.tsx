@@ -1,6 +1,7 @@
 import StatusBar from 'components/StatusBar';
 import styles from './app.module.scss';
 import Main from './Main';
+import ScoreAnalyze from './ScoreAnalyze';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <div className={styles.app}>
         <StatusBar />
         <Main />
+        <ScoreAnalyze />
       </div>
     </div>
   );

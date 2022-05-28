@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { HealthInfo } from 'data/index';
 import { InfoIcon } from 'assets';
-import ScoreAnalyze from './ScoreAnalyze';
 import styles from './main.module.scss';
 
 function Main() {
@@ -79,7 +78,6 @@ function Main() {
           </a>
         </div>
       </div>
-      <ScoreAnalyze />
     </div>
   );
 }
