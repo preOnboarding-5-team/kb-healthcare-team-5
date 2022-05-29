@@ -28,16 +28,19 @@ export default function ScoreChart({
   className,
 }: ScoreChartProps) {
   const { boundRef, boundHeight, boundWidth } = useRectBound<HTMLDivElement>();
+
   const barWidth = ((boundWidth * DEFAULT_BAR_SCALE) / data.length) * barScale;
+  const barSpacing =
+    (boundWidth - padding * 2 - barWidth * data.length) / (data.length - 1);
+
   const values = data.map((datum) => (datum.value > 0 ? datum.value : 0));
   const maxValue = Math.max(...values);
   const divider = maxValue > 0 ? maxValue : 1;
+
   const barHeights = values.map(
     (value) => Math.max(((boundHeight - 20) * value) / divider),
     20
   );
-  const barSpacing =
-    (boundWidth - padding * 2 - barWidth * data.length) / (data.length - 1);
 
   const bars = barHeights.map((height, idx) => {
     const key = `chart-${data[idx].label}-${idx}`;
