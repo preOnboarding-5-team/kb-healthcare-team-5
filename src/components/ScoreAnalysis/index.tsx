@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import Detail from 'components/Detail';
-import AverageAnalysis from './_components/AverageAnalysis';
-import PredictAnalysis from './_components/Predict/PredictAnalysis';
-import PredictExpense from './_components/Predict/PredictExpense';
-import ScoreTrend from './_components/ScoreTrend';
+import {
+  AverageAnalysis,
+  PredictAnalysis,
+  PredictExpense,
+  ScoreTrend,
+} from './_components';
 import styles from './scoreAnalysis.module.scss';
 
 export default function ScoreAnalyze() {

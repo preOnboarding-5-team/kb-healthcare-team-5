@@ -20,16 +20,16 @@
 
   .resultTitle {
     position: relative;
-    top: 110px;
-    margin-bottom: 160px;
+    top: 20px;
+    margin: 60px 28px;
     margin-left: 28px;
     font-weight: 700;
   }
+}
 
-  .chart {
-    width: 80%;
-    height: 200px;
-    margin: 0 auto;
-    font-size: 10px;
-  }
+.chart {
+  width: 80%;
+  height: 150px;
+  margin: 20px auto 80px;
+  font-size: 10px;
 }

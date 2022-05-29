@@ -1,19 +1,16 @@
 import ScoreChart from 'components/common/ScoreChart';
+import styles from './binaryChart.module.scss';
 
 interface CompareChartProps {
-  className: string;
-  dataList: ChartData[];
+  data: ChartData[];
 }
 
-export default function BinaryChart({
-  className,
-  dataList,
-}: CompareChartProps) {
+export default function BinaryChart({ data }: CompareChartProps) {
   return (
     <ScoreChart
-      className={className}
-      data={dataList}
-      highlightOn={dataList[0].id - 1}
+      className={styles.chart}
+      data={data}
+      highlightOn={data[0].id - 1}
       highlightPoint
       barScale={0.9}
       padding={50}
