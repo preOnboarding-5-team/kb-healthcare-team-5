@@ -8,15 +8,18 @@ export default function ScoreTrend() {
   const scoreTrendData = getScoreTrendData(4);
   const numData = scoreTrendData.length;
 
-  const thisYear = scoreTrendData[numData - 1].label;
+  const thisYear = +scoreTrendData[numData - 1].label;
   const scoreDiff =
     scoreTrendData[numData - 1].value - scoreTrendData[numData - 2].value;
 
   const object = useMemo(() => {
     if (numData < 2) return `${scoreTrendData[0].value}점 입니다.`;
     if (scoreDiff === 0) return '지난해와 같아요.';
+
+    const nearestYear = +scoreTrendData[numData - 2].label;
+    if (thisYear - nearestYear > 1) return `${nearestYear}년보다`;
     return '지난해보다';
-  }, [numData, scoreDiff, scoreTrendData]);
+  }, [thisYear, numData, scoreDiff, scoreTrendData]);
 
   const worseOrBetter = useMemo(() => {
     if (scoreDiff > 0) return 'better';
