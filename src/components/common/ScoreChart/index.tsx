@@ -9,6 +9,7 @@ const CHART_HEIGHT_RATIO = 6 / 7;
 interface ScoreChartProps {
   data: ChartData[];
   highlightOn: number | string;
+  secondaryHighlightOn?: number | string;
   highlightPoint?: boolean;
   barScale?: number;
   axisColor?: string;
@@ -20,6 +21,7 @@ interface ScoreChartProps {
 export default function ScoreChart({
   data,
   highlightOn,
+  secondaryHighlightOn,
   highlightPoint = false,
   barScale = 1,
   axisColor = '#000',
@@ -45,11 +47,16 @@ export default function ScoreChart({
   const bars = barHeights.map((height, idx) => {
     const key = `chart-${data[idx].label}-${idx}`;
     const highlight = highlightOn === idx || highlightOn === data[idx].label;
+    const secondaryHighlight =
+      secondaryHighlightOn === idx || secondaryHighlightOn === data[idx].label;
 
     return (
       <div className={styles.barWrapper} style={{ height }} key={key}>
         <div
-          className={cx(styles.bar, { [styles.barHighlight]: highlight })}
+          className={cx(styles.bar, {
+            [styles.barHighlight]: highlight,
+            [styles.barSecondaryHighlight]: secondaryHighlight,
+          })}
           style={{ width: barWidth }}
         >
           <p

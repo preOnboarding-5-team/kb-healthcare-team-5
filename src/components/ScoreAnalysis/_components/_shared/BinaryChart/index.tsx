@@ -10,7 +10,8 @@ export default function BinaryChart({ data }: CompareChartProps) {
     <ScoreChart
       className={styles.chart}
       data={data}
-      highlightOn={data[0].id - 1}
+      highlightOn={0}
+      secondaryHighlightOn={1}
       highlightPoint
       barScale={0.9}
       padding={50}
