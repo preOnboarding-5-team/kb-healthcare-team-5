@@ -11,16 +11,9 @@ export const getScoreTrendData = (numYears: number) => {
       Number(b.SUBMIT_DATE.substring(0, 4))
   );
 
-  const thisYear = Number(data[data.length - 1].SUBMIT_DATE.substring(0, 4));
-
-  return data
-    .filter(
-      ({ SUBMIT_DATE }) =>
-        thisYear - Number(SUBMIT_DATE.substring(0, 4)) < numYears
-    )
-    .map(({ SCORE, SUBMIT_DATE }, idx) => ({
-      id: idx,
-      label: SUBMIT_DATE.substring(0, 4),
-      value: Number(SCORE),
-    }));
+  return data.slice(-numYears).map(({ SCORE, SUBMIT_DATE }, idx) => ({
+    id: idx,
+    label: SUBMIT_DATE.substring(0, 4),
+    value: Number(SCORE),
+  }));
 };

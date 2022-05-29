@@ -1,4 +1,5 @@
 import cx from 'classnames';
+import { useMemo } from 'react';
 import { useRectBound } from './_hooks';
 import styles from './scoreChart.module.scss';
 
@@ -30,11 +31,16 @@ export default function ScoreChart({
   className,
 }: ScoreChartProps) {
   const { boundRef, boundHeight, boundWidth } = useRectBound<HTMLDivElement>();
-
-  const barWidth = ((boundWidth * DEFAULT_BAR_SCALE) / data.length) * barScale;
-  const barSpacing =
-    (boundWidth - padding * 2 - barWidth * data.length) / (data.length - 1);
-
+  const barWidth = useMemo(() => {
+    if (data.length < 2) return 50;
+    return ((boundWidth * DEFAULT_BAR_SCALE) / data.length) * barScale;
+  }, [data.length, boundWidth, barScale]);
+  const barSpacing = useMemo(() => {
+    if (data.length < 2) return 0;
+    return (
+      (boundWidth - padding * 2 - barWidth * data.length) / (data.length - 1)
+    );
+  }, [data.length, boundWidth, padding, barWidth]);
   const values = data.map((datum) => (datum.value > 0 ? datum.value : 0));
   const maxValue = Math.max(...values);
   const divider = maxValue > 0 ? maxValue : 1;

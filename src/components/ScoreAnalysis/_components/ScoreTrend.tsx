@@ -9,16 +9,24 @@ export default function ScoreTrend() {
   const numData = scoreTrendData.length;
 
   const thisYear = +scoreTrendData[numData - 1].label;
-  const scoreDiff =
-    scoreTrendData[numData - 1].value - scoreTrendData[numData - 2].value;
+  const scoreDiff = useMemo(() => {
+    if (numData < 2) return 0;
+    return (
+      scoreTrendData[numData - 1].value - scoreTrendData[numData - 2].value
+    );
+  }, [numData, scoreTrendData]);
 
   const object = useMemo(() => {
     if (numData < 2) return `${scoreTrendData[0].value}점 입니다.`;
-    if (scoreDiff === 0) return '지난해와 같아요.';
 
     const nearestYear = +scoreTrendData[numData - 2].label;
-    if (thisYear - nearestYear > 1) return `${nearestYear}년보다`;
-    return '지난해보다';
+
+    if (thisYear - nearestYear > 1) {
+      if (scoreDiff === 0) return `총점이 ${nearestYear}년과 동일해요.`;
+      return `총점이 ${nearestYear}년 보다`;
+    }
+    if (scoreDiff === 0) return '총점이 지난해와 동일해요.';
+    return '총점이 지난해 보다';
   }, [thisYear, numData, scoreDiff, scoreTrendData]);
 
   const worseOrBetter = useMemo(() => {
@@ -45,7 +53,7 @@ export default function ScoreTrend() {
         data={scoreTrendData}
         highlightOn={scoreTrendData.length - 1}
         highlightPoint
-        padding={25}
+        padding={20}
         barScale={1.1}
       />
     </>
