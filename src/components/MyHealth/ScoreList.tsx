@@ -9,6 +9,7 @@ import styles from './myHealth.module.scss';
 interface IScoreListProps {
   toggleModal: () => void;
 }
+
 function ScoreList({ toggleModal }: IScoreListProps) {
   const printScore = HealthInfo.healthScoreList.map((item) => {
     const key = item.SUBMIT_DATE;

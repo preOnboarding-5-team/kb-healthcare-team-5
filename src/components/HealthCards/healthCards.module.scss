@@ -1,5 +1,25 @@
 @use '/src/styles/constants/colors';
 
+.titleWrapper{
+  margin: 20px 28px;
+  
+  .title {
+    position: relative;
+    font-weight: 700;
+    line-height: 2.3;
+  }
+
+  .subText {
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+}
+
 .healthCards {
   width: 320px;
   padding: 35px 20px;

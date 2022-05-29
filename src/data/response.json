@@ -15,9 +15,7 @@
     "totalRate": "0.32",
     "his": "37",
     "contribution": {
-      "bloodPressure": {
-        
-      },
+      "bloodPressure": {},
       "medical": {
         "resUrinaryProtein": "5.08"
       },

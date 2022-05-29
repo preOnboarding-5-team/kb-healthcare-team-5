@@ -1,9 +1,10 @@
 @use 'src/styles/constants/colors';
+@use 'src/styles/constants/levels';
 
 .statusBar {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: levels.$status-bar;
   display: flex;
   align-items: center;
   justify-content: space-between;
