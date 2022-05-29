@@ -5,7 +5,7 @@ import { ResultBox } from './_shared/ResultBox';
 import styles from '../scoreAnalysis.module.scss';
 
 export default function ScoreTrend() {
-  const scoreTrendData = getScoreTrendData();
+  const scoreTrendData = getScoreTrendData(4);
   const numData = scoreTrendData.length;
 
   const thisYear = scoreTrendData[numData - 1].label;
