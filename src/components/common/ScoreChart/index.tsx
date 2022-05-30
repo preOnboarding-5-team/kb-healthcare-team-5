@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import cx from 'classnames';
+import { useMemo } from 'react';
 import { useRectBound } from './_hooks';
 import styles from './scoreChart.module.scss';
 
@@ -37,6 +38,7 @@ export default function ScoreChart({
       (data.length > 1 ? 1 : 2) /
       data.length) *
     barScale;
+
   const barSpacing = useMemo(() => {
     if (data.length < 2) return 0;
     return (

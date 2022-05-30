@@ -18,7 +18,6 @@ export default function ScoreTrend() {
 
   const object = useMemo(() => {
     if (numData < 2) return `${scoreTrendData[0].value}점 입니다.`;
-    if (scoreDiff === 0) return '지난해와 같아요.';
 
     const nearestYear = Number(scoreTrendData[numData - 2].label);
     if (thisYear - nearestYear > 1) return `${nearestYear}년보다`;
