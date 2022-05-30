@@ -8,15 +8,19 @@ export default function ScoreTrend() {
   const scoreTrendData = getScoreTrendData(4);
   const numData = scoreTrendData.length;
 
-  const thisYear = +scoreTrendData[numData - 1].label;
-  const scoreDiff =
-    scoreTrendData[numData - 1].value - scoreTrendData[numData - 2].value;
+  const thisYear = Number(scoreTrendData[numData - 1].label);
+  const scoreDiff = useMemo(() => {
+    if (numData < 2) return 0;
+    return (
+      scoreTrendData[numData - 1].value - scoreTrendData[numData - 2].value
+    );
+  }, [numData, scoreTrendData]);
 
   const object = useMemo(() => {
     if (numData < 2) return `${scoreTrendData[0].value}점 입니다.`;
     if (scoreDiff === 0) return '지난해와 같아요.';
 
-    const nearestYear = +scoreTrendData[numData - 2].label;
+    const nearestYear = Number(scoreTrendData[numData - 2].label);
     if (thisYear - nearestYear > 1) return `${nearestYear}년보다`;
     return '지난해보다';
   }, [thisYear, numData, scoreDiff, scoreTrendData]);
@@ -35,7 +39,7 @@ export default function ScoreTrend() {
   return (
     <>
       <ResultBox
-        subject={`${numData < 2 ? `${thisYear}년 ` : ''}건강 점수는`}
+        subject={numData < 2 ? `${thisYear}년 ` : '총점이'}
         object={object}
         worseOrBetter={worseOrBetter}
         commentOnScore={commentOnScore}
@@ -46,7 +50,7 @@ export default function ScoreTrend() {
         highlightOn={scoreTrendData.length - 1}
         highlightPoint
         padding={25}
-        barScale={1.1}
+        barScale={1}
       />
     </>
   );
