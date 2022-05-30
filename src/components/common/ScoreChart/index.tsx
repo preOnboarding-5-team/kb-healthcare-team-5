@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 import cx from 'classnames';
-import { useMemo } from 'react';
 import { useRectBound } from './_hooks';
 import styles from './scoreChart.module.scss';
 
