@@ -1,9 +1,9 @@
-import cx from 'classnames';
 import { useMemo } from 'react';
+import cx from 'classnames';
 import { useRectBound } from './_hooks';
 import styles from './scoreChart.module.scss';
 
-const DEFAULT_BAR_SCALE = 0.4;
+const BAR_SCLAE_FACTOR = 0.4;
 const LABEL_TOP = 20;
 const CHART_HEIGHT_RATIO = 6 / 7;
 
@@ -31,16 +31,20 @@ export default function ScoreChart({
   className,
 }: ScoreChartProps) {
   const { boundRef, boundHeight, boundWidth } = useRectBound<HTMLDivElement>();
-  const barWidth = useMemo(() => {
-    if (data.length < 2) return 50;
-    return ((boundWidth * DEFAULT_BAR_SCALE) / data.length) * barScale;
-  }, [data.length, boundWidth, barScale]);
+
+  const barWidth =
+    ((boundWidth * BAR_SCLAE_FACTOR) /
+      (data.length > 1 ? 1 : 2) /
+      data.length) *
+    barScale;
+
   const barSpacing = useMemo(() => {
     if (data.length < 2) return 0;
     return (
       (boundWidth - padding * 2 - barWidth * data.length) / (data.length - 1)
     );
   }, [data.length, boundWidth, padding, barWidth]);
+
   const values = data.map((datum) => (datum.value > 0 ? datum.value : 0));
   const maxValue = Math.max(...values);
   const divider = maxValue > 0 ? maxValue : 1;
@@ -128,6 +132,7 @@ export default function ScoreChart({
           margin: `0 ${padding}px`,
           width: boundWidth - 2 * padding - barWidth,
           height: boundHeight - LABEL_TOP,
+          justifyContent: data.length < 2 ? 'center' : 'space-between',
         }}
       >
         {bars}
@@ -137,6 +142,7 @@ export default function ScoreChart({
         style={{
           borderTop: `1px solid ${axisColor}`,
           padding: `0 ${padding}px`,
+          justifyContent: data.length < 2 ? 'center' : 'space-between',
         }}
       >
         {tickLabels}
