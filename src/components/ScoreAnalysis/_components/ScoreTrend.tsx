@@ -22,7 +22,7 @@ export default function ScoreTrend() {
     const nearestYear = Number(scoreTrendData[numData - 2].label);
     if (thisYear - nearestYear > 1) return `${nearestYear}년보다`;
     return '지난해보다';
-  }, [thisYear, numData, scoreDiff, scoreTrendData]);
+  }, [thisYear, numData, scoreTrendData]);
 
   const worseOrBetter = useMemo(() => {
     if (scoreDiff > 0) return 'better';
