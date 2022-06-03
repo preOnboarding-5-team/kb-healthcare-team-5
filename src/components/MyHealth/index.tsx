@@ -4,12 +4,13 @@ import { ChevronRightIcon, InfoIcon } from 'assets/svgs';
 import { HealthInfo } from 'data';
 import { formatFlatDate } from 'utils';
 
-import ScoreList from './ScoreList';
+import Detail from 'components/Detail';
+import ScoreListItem from './ScoreListItem';
 
 import styles from './myHealth.module.scss';
 
 function MyHealth() {
-  const [modalShown, setModalShown] = useState<boolean>(false);
+  const [modalShown, setModalShown] = useState(false);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -51,6 +52,18 @@ function MyHealth() {
     drawCanvas();
   }, [drawCanvas]);
 
+  const scores = HealthInfo.healthScoreList.map((item) => {
+    const key = item.SUBMIT_DATE;
+    return (
+      <ScoreListItem
+        key={key}
+        score={item.SCORE}
+        submitDate={item.SUBMIT_DATE}
+        cntns={item.CNTNS}
+      />
+    );
+  });
+
   return (
     <section className={styles.myHealth}>
       <p className={styles.logo}>마이헬스</p>
@@ -75,7 +88,11 @@ function MyHealth() {
           건강검진결과 가져오기
           <ChevronRightIcon fill="#4b5563" />
         </button>
-        {modalShown && <ScoreList toggleModal={toggleModal} />}
+        {modalShown && (
+          <Detail setDetail={setModalShown} title="건강검진결과 가져오기">
+            {scores}
+          </Detail>
+        )}
         <div className={styles.infoContainer}>
           <p className={styles.info}>기본정보</p>
           <div className={styles.detail}>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HealthInfo } from 'data';
 import Detail from 'components/Detail';
 import {
   AverageAnalysis,
@@ -8,14 +9,25 @@ import {
 } from './_components';
 import styles from './scoreAnalysis.module.scss';
 
-export default function ScoreAnalyze() {
+function ScoreAnalyze() {
   const [detail, setDetail] = useState(false);
   const handleClickButton = () => {
     setDetail(true);
   };
   return (
     <section className={styles.wrapper}>
-      {detail && <Detail setDetail={setDetail} />}
+      {detail && (
+        <Detail title="건강 검진 결과" setDetail={setDetail}>
+          {[...Object.entries(HealthInfo.wxcResultMap.boj)].map(
+            ([key, value]) => (
+              <div key={`${key}-${value}`}>
+                <p className={styles.key}>{key}</p>
+                <p className={styles.desc}>{value}</p>
+              </div>
+            )
+          )}
+        </Detail>
+      )}
 
       <div className={styles.titleWrapper}>
         <h2 className={styles.title}>건강점수 분석 결과</h2>
@@ -35,3 +47,5 @@ export default function ScoreAnalyze() {
     </section>
   );
 }
+
+export default ScoreAnalyze;
