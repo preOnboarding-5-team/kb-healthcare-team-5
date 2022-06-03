@@ -7,8 +7,8 @@ import styles from '../scoreAnalysis.module.scss';
 export default function ScoreTrend() {
   const scoreTrendData = getScoreTrendData(4);
   const numData = scoreTrendData.length;
-
-  const thisYear = Number(scoreTrendData[numData - 1].label);
+  const thisYear = new Date().getFullYear();
+  const targetYear = Number(scoreTrendData[numData - 1].label);
   const scoreDiff = useMemo(() => {
     if (numData < 2) return 0;
     return (
@@ -20,9 +20,10 @@ export default function ScoreTrend() {
     if (numData < 2) return `${scoreTrendData[0].value}점 입니다.`;
 
     const nearestYear = Number(scoreTrendData[numData - 2].label);
-    if (thisYear - nearestYear > 1) return `${nearestYear}년보다`;
+    if (targetYear - nearestYear > 1 || targetYear !== thisYear)
+      return `${nearestYear}년보다`;
     return '지난해보다';
-  }, [thisYear, numData, scoreTrendData]);
+  }, [targetYear, numData, thisYear, scoreTrendData]);
 
   const worseOrBetter = useMemo(() => {
     if (scoreDiff > 0) return 'better';
@@ -38,7 +39,7 @@ export default function ScoreTrend() {
   return (
     <>
       <ResultBox
-        subject={numData < 2 ? `${thisYear}년 ` : '총점이'}
+        subject={numData < 2 ? `${targetYear}년 ` : '총점이'}
         object={object}
         worseOrBetter={worseOrBetter}
         commentOnScore={commentOnScore}
