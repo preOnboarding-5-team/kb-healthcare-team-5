@@ -66,7 +66,7 @@ function MyHealth() {
 
   return (
     <section className={styles.myHealth}>
-      <p className={styles.logo}>마이헬스</p>
+      <h1 className={styles.logo}>마이헬스</h1>
       <div className={styles.wrap}>
         <div className={styles.title}>
           <p>김헬스님의 건강점수</p>
