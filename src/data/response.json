@@ -15,9 +15,7 @@
     "totalRate": "0.32",
     "his": "37",
     "contribution": {
-      "bloodPressure": {
-        
-      },
+      "bloodPressure": {},
       "medical": {
         "resUrinaryProtein": "5.08"
       },
@@ -115,7 +113,6 @@
     },
     "w_contribution": {
       "resBMI": 26.26,
-      "resUrinaryProtein": 10.16,
       "resTotalCholesterol": 16.74,
       "resFastingBloodSuger": 37.95,
       "exerciQty": 8.9
@@ -155,7 +152,6 @@
     "contribution_point": {
       "totalPoint": 46.237904,
       "resBMI": 12.143867,
-      "resUrinaryProtein": 4.697021,
       "resTotalCholesterol": 7.7380366,
       "resFastingBloodSuger": 17.54503,
       "exerciQty": 4.1139483
@@ -247,6 +243,12 @@
       "tag1": "유산소운동",
       "tag2": "체중감량",
       "tag3": "흡연관리"
+    },
+    {
+      "tagId": "resTotalCholesterol",
+      "tag1": "현상유지",
+      "tag2": "",
+      "tag3": ""
     },
     {
       "tagId": "resUrinaryProtein",

@@ -1,13 +1,29 @@
 @use 'src/styles/constants/colors';
+@use 'src/styles/constants/levels';
 
 .statusBar {
   position: sticky;
   top: 0;
+  z-index: levels.$status-bar;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   height: 24px;
-  color: colors.$white;
+  padding: 0 10px;
   background: colors.$black;
+  
+  .centerSection {
+    color: colors.$white;
+  }
+
+  .wifiIcon,
+  .batteryIcon {
+    height: 100%;
+    fill: colors.$white;
+  }
+
+  .batteryIcon {
+    transform: rotate(90deg);
+  }
 }

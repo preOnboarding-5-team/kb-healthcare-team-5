@@ -1,0 +1,113 @@
+@use 'styles/constants/colors';
+@use 'styles/constants/levels';
+
+.wrapper {
+  position: relative;
+  display: grid;
+  grid-template-rows: 6fr 1fr;
+  color: colors.$gray-900;
+  
+  .barsWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  .barWrapper {
+    position: relative;
+
+    .bar {
+      position: absolute;
+      bottom: 0;
+      height: max(calc(100% - 20px), 0px);
+      background-color: colors.$gray-200;
+      animation: 1s grow;
+      animation-fill-mode: 'both';
+      animation-delay: 50ms;
+
+      .label {
+        position: absolute;
+        top: -20px;
+        right: 0;
+        left: 0;
+        z-index: 100;
+        height: 20px;
+        color: colors.$gray-300;
+        text-align: center;
+      }
+
+      .labelHighlight {
+        font-weight: 700;
+        color: colors.$gray-900;
+      }
+    }
+
+    .barHighlight {
+      background-color: colors.$primary;
+    }
+
+    .barSecondaryHighlight {
+      background-color: colors.$secondary;
+    }
+
+    .point {
+      position: absolute;
+      top: 0;
+      z-index: levels.$point;
+      width: 8px;
+      height: 8px;
+      background-color: colors.$black;
+    }
+
+    .circle {
+      background-color: colors.$white;
+      border: 2px solid colors.$black;
+      border-radius: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+    
+    .square {
+      transform: translateY(-50%) translateX(-50%) rotate(40deg);
+    }
+    
+    .pointHighlight {
+      background-color: colors.$gray-900;
+      border: none;
+    }
+  }
+
+  .tickLabels {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+
+    .tickLabel {
+      position: relative;
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
+
+  .lines {
+    position: absolute;
+    bottom: 20px;
+    height: calc(100% * 6 / 7);
+    animation: 1s grow;
+
+    line {
+      stroke: colors.$black;
+    }
+  }
+}
+
+@keyframes grow {
+  from {
+    height: 0;
+  }
+  
+}
