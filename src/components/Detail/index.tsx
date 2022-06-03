@@ -1,13 +1,13 @@
-import { useRef } from 'react';
+import { PropsWithChildren, useRef } from 'react';
 import type { Dispatch, SetStateAction, MouseEvent } from 'react';
-import { HealthInfo } from 'data';
 import styles from './detail.module.scss';
 
-interface DetailProps {
+type DetailProps = PropsWithChildren<{
+  title: string;
   setDetail: Dispatch<SetStateAction<boolean>>;
-}
+}>;
 
-function Detail({ setDetail }: DetailProps) {
+function Detail({ setDetail, title, children }: DetailProps) {
   const outerRef = useRef<HTMLDivElement>(null);
 
   const handleClickOuterArea = (e: MouseEvent<HTMLDivElement>) => {
@@ -38,14 +38,7 @@ function Detail({ setDetail }: DetailProps) {
         >
           뒤로 가기
         </button>
-        {[...Object.entries(HealthInfo.wxcResultMap.boj)].map(
-          ([key, value]) => (
-            <div key={`${key}-${value}`}>
-              <p className={styles.key}>{key}</p>
-              <p className={styles.desc}>{value}</p>
-            </div>
-          )
-        )}
+        {children}
       </article>
     </div>
   );

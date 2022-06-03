@@ -92,44 +92,6 @@
       .closeButton {
         align-self: flex-end;
       }
-
-      .title {
-        margin-bottom: 10px;
-        font-size: 20px;
-      }
-
-      .scoreListItem {
-        width: 100%;
-        cursor: pointer;
-        user-select: none;
-        border: 1px solid colors.$black;
-
-        &:not(:last-child) {
-          margin-bottom: 10px;
-        }
-
-        div {
-          display: flex;
-          align-items: center;
-
-          &:not(:last-child) {
-            border-bottom: 1px solid colors.$black;
-          }
-
-          dt {
-            width: 30%;
-            padding: 4px 8px;
-          }
-
-          dd {
-            width: 70%;
-            padding: 4px 8px;
-            line-height: 1.25rem;
-            word-break: keep-all;
-            border-left: 1px solid colors.$black;
-          }
-        }
-      }
     }
 
     .infoContainer {
@@ -162,6 +124,41 @@
           }
         }
       }
+    }
+  }
+}
+
+.scoreListItem {
+  width: 100%;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid colors.$black;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    
+    &:not(:last-child) {
+      border-bottom: 1px solid colors.$black;
+    }
+    
+    dt {
+      width: 30%;
+      padding: 4px 8px;
+    }
+
+    dd {
+      width: 70%;
+      padding: 4px 8px;
+      line-height: 1.25rem;
+
+      // word-break: keep-all;
+      border-left: 1px solid colors.$black;
     }
   }
 }
