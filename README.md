@@ -56,7 +56,7 @@
 </details>
 
 ## 마이헬스
-<img src="https://user-images.githubusercontent.com/47405655/171990789-b4b24b8c-a810-4cc6-8977-29a10a6e87d9.png" width="300" />
+<img src="https://user-images.githubusercontent.com/29668380/171992556-b4b661cd-8764-4c91-9bd9-759556e33203.gif" width="300" />
 
 
 * 구현 설명
