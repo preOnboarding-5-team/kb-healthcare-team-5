@@ -99,7 +99,9 @@
   - `기준(최근) 데이터 1개만 있고 비교할 만한 그 이전 데이터가 없는 경우`
 
 ## 맞춤 건강 관리
-![image](https://user-images.githubusercontent.com/64529155/171986966-fecf7011-b04c-43d9-b69c-2dc91df92b8b.png)
+
+<img width="785" alt="스크린샷 2022-06-04 오후 7 03 01" src="https://user-images.githubusercontent.com/88325253/171994630-d3dfc5ba-0669-41b4-a504-cea8ce215553.png">
+
 
 ### 구현 설명
 * 태그에 대해서는 주어진 ppt내용과 똑같이 첫 번째 요소만 색깔을 넣어주었습니다.
