@@ -24,7 +24,7 @@
       height: max(calc(100% - 20px), 0px);
       background-color: colors.$gray-200;
       animation: 1s grow;
-      animation-fill-mode: 'both';
+      animation-fill-mode: both;
       animation-delay: 50ms;
 
       .label {
@@ -34,7 +34,7 @@
         left: 0;
         z-index: 100;
         height: 20px;
-        color: colors.$gray-300;
+        color: colors.$gray-500;
         text-align: center;
       }
 

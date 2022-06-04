@@ -1,8 +1,13 @@
+import type { RefObject } from 'react';
 import { HealthInfo } from 'data';
 import BinaryChart from './_shared/BinaryChart';
 import { ResultBox } from './_shared/ResultBox';
 
-function AverageAnalysis(): JSX.Element {
+interface AverageAnlysisProps {
+  appRef: RefObject<HTMLDivElement>;
+}
+
+function AverageAnalysis({ appRef }: AverageAnlysisProps): JSX.Element {
   const percentData = 100 - Number(HealthInfo.wxcResultMap.hscorePercent);
   const commentPercentData = `${
     percentData > 50 ? '하위' : '상위'
@@ -55,7 +60,7 @@ function AverageAnalysis(): JSX.Element {
         worseOrBetter={hScoreGapClassName}
         commentOnRank={commentPercentData}
       />
-      <BinaryChart data={dataList} />
+      <BinaryChart data={dataList} appRef={appRef} />
     </>
   );
 }

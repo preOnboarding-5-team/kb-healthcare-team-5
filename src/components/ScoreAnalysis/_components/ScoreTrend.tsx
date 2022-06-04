@@ -1,10 +1,15 @@
 import { useMemo } from 'react';
+import type { RefObject } from 'react';
 import ScoreChart from 'components/common/ScoreChart';
 import { getScoreTrendData } from 'components/ScoreAnalysis/_utils';
 import { ResultBox } from './_shared/ResultBox';
 import styles from '../scoreAnalysis.module.scss';
 
-export default function ScoreTrend() {
+interface ScoreTrendProps {
+  appRef: RefObject<HTMLDivElement>;
+}
+
+export default function ScoreTrend({ appRef }: ScoreTrendProps) {
   const scoreTrendData = getScoreTrendData(4);
   const numData = scoreTrendData.length;
   const thisYear = new Date().getFullYear();
@@ -51,6 +56,7 @@ export default function ScoreTrend() {
         highlightPoint
         padding={25}
         barScale={1}
+        appRef={appRef}
       />
     </>
   );

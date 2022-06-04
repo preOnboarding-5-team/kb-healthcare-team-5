@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { RefObject } from 'react';
 import { HealthInfo } from 'data';
 import Detail from 'components/Detail';
 import {
@@ -9,7 +10,11 @@ import {
 } from './_components';
 import styles from './scoreAnalysis.module.scss';
 
-function ScoreAnalyze() {
+interface ScoreAnalyzeProps {
+  appRef: RefObject<HTMLDivElement>;
+}
+
+function ScoreAnalyze({ appRef }: ScoreAnalyzeProps) {
   const [detail, setDetail] = useState(false);
   const handleClickButton = () => {
     setDetail(true);
@@ -39,11 +44,11 @@ function ScoreAnalyze() {
           결과 자세히 보기
         </button>
       </div>
-      <ScoreTrend />
-      <AverageAnalysis />
+      <ScoreTrend appRef={appRef} />
+      <AverageAnalysis appRef={appRef} />
       <h2 className={styles.resultTitle}>나의 10년 후 건강 예측</h2>
-      <PredictAnalysis />
-      <PredictExpense />
+      <PredictAnalysis appRef={appRef} />
+      <PredictExpense appRef={appRef} />
     </section>
   );
 }
