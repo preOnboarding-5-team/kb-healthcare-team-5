@@ -10,7 +10,7 @@
 
 
 ## 마이헬스
-![Screen-Recording-2022-06-04-at-13 02 34](https://user-images.githubusercontent.com/29668380/171987161-f7d29330-f33a-42f6-90ec-545f852408d8.gif)
+<img src="https://user-images.githubusercontent.com/29668380/171987161-f7d29330-f33a-42f6-90ec-545f852408d8.gif" width="300" />
 
 * 구현 설명
 
