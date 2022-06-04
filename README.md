@@ -6,6 +6,8 @@
 
 ## 개발 스택
 
+### React.js, TypeScript
+
 ## 폴더 구조
 
 
