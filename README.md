@@ -11,7 +11,7 @@
 
 ## 배포 링크
 
-- kb-healthcare-team-5.vercel.app
+- https://kb-healthcare-team-5.vercel.app/
 
 ## Dependencies
 
