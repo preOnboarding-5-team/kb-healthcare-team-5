@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
+import type { RefObject } from 'react';
 import cx from 'classnames';
-import { useRectBound } from './_hooks';
+import { useIntersectionObserver, useRectBound } from './_hooks';
 import styles from './scoreChart.module.scss';
 
 const BAR_SCLAE_FACTOR = 0.4;
@@ -17,6 +18,7 @@ interface ScoreChartProps {
   pointStyle?: 'circle' | 'square';
   padding?: number;
   className?: string;
+  appRef?: RefObject<HTMLElement>;
 }
 
 export default function ScoreChart({
@@ -25,12 +27,14 @@ export default function ScoreChart({
   secondaryHighlightOn,
   highlightPoint = false,
   barScale = 1,
-  axisColor = '#000',
+  axisColor = '#111827',
   pointStyle = 'circle',
   padding = 0,
   className,
+  appRef,
 }: ScoreChartProps) {
   const { boundRef, boundHeight, boundWidth } = useRectBound<HTMLDivElement>();
+  const { isVisible } = useIntersectionObserver(appRef, boundRef);
 
   const barWidth =
     ((boundWidth * BAR_SCLAE_FACTOR) /
@@ -126,30 +130,34 @@ export default function ScoreChart({
 
   return (
     <div className={cx(styles.wrapper, className)} ref={boundRef}>
-      <div
-        className={styles.barsWrapper}
-        style={{
-          margin: `0 ${padding}px`,
-          width: boundWidth - 2 * padding - barWidth,
-          height: boundHeight - LABEL_TOP,
-          justifyContent: data.length < 2 ? 'center' : 'space-between',
-        }}
-      >
-        {bars}
-      </div>
-      <div
-        className={cx(styles.tickLabels)}
-        style={{
-          borderTop: `1px solid ${axisColor}`,
-          padding: `0 ${padding}px`,
-          justifyContent: data.length < 2 ? 'center' : 'space-between',
-        }}
-      >
-        {tickLabels}
-      </div>
-      <svg className={styles.lines} width={boundWidth}>
-        {lines}
-      </svg>
+      {isVisible && (
+        <>
+          <div
+            className={styles.barsWrapper}
+            style={{
+              margin: `0 ${padding}px`,
+              width: boundWidth - 2 * padding - barWidth,
+              height: boundHeight - LABEL_TOP,
+              justifyContent: data.length < 2 ? 'center' : 'space-between',
+            }}
+          >
+            {bars}
+          </div>
+          <div
+            className={cx(styles.tickLabels)}
+            style={{
+              borderTop: `1px solid ${axisColor}`,
+              padding: `0 ${padding}px`,
+              justifyContent: data.length < 2 ? 'center' : 'space-between',
+            }}
+          >
+            {tickLabels}
+          </div>
+          <svg className={styles.lines} width={boundWidth}>
+            {lines}
+          </svg>
+        </>
+      )}
     </div>
   );
 }

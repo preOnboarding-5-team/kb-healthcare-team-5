@@ -1,8 +1,13 @@
+import type { RefObject } from 'react';
 import { HealthInfo } from 'data';
 import BinaryChart from './_shared/BinaryChart';
 import { ResultBox } from './_shared/ResultBox';
 
-function PredictAnalysis(): JSX.Element {
+interface PredictAnalysisProps {
+  appRef: RefObject<HTMLDivElement>;
+}
+
+function PredictAnalysis({ appRef }: PredictAnalysisProps): JSX.Element {
   const userHscore = Number(HealthInfo.wxcResultMap.wHscore);
   const predictHscore = HealthInfo.wxcResultMap.wHscoreDy
     .substring(1, HealthInfo.wxcResultMap.wHscoreDy.length - 1)
@@ -42,7 +47,7 @@ function PredictAnalysis(): JSX.Element {
         commentOnScore={hScoreGapComment}
         worseOrBetter={hScoreGapClassName}
       />
-      <BinaryChart data={dataList} />
+      <BinaryChart data={dataList} appRef={appRef} />
     </>
   );
 }

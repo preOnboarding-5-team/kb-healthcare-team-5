@@ -1,11 +1,13 @@
+import type { RefObject } from 'react';
 import ScoreChart from 'components/common/ScoreChart';
 import styles from './binaryChart.module.scss';
 
 interface CompareChartProps {
   data: ChartData[];
+  appRef: RefObject<HTMLElement>;
 }
 
-export default function BinaryChart({ data }: CompareChartProps) {
+export default function BinaryChart({ data, appRef }: CompareChartProps) {
   return (
     <ScoreChart
       className={styles.chart}
@@ -15,6 +17,7 @@ export default function BinaryChart({ data }: CompareChartProps) {
       highlightPoint
       barScale={0.9}
       padding={50}
+      appRef={appRef}
     />
   );
 }

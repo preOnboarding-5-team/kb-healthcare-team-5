@@ -1,8 +1,13 @@
+import type { RefObject } from 'react';
 import { HealthInfo } from 'data';
 import BinaryChart from './_shared/BinaryChart';
 import { ResultBox } from './_shared/ResultBox';
 
-function PredictExpense(): JSX.Element {
+interface PredictExpenseProps {
+  appRef: RefObject<HTMLDivElement>;
+}
+
+function PredictExpense({ appRef }: PredictExpenseProps): JSX.Element {
   const userMedi = Number(HealthInfo.wxcResultMap.medi);
   const predictMedi = HealthInfo.wxcResultMap.mediDy
     .substring(1, HealthInfo.wxcResultMap.mediDy.length - 1)
@@ -42,7 +47,7 @@ function PredictExpense(): JSX.Element {
         commentOnScore={hScoreGapComment}
         worseOrBetter={hScoreGapClassName}
       />
-      <BinaryChart data={dataList} />
+      <BinaryChart data={dataList} appRef={appRef} />
     </>
   );
 }
