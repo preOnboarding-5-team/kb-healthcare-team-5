@@ -1,11 +1,27 @@
 # KB-Healthcare-team-5
 
 ## 개발자
-### 곽태훈, 민지원, 박휘건, 이지정, 장재혁, 문재석, 이선아
+
+곽태훈, 민지원, 박휘건, 이지정, 장재혁, 문재석, 이선아
 
 ## 개발기간
 
-## 개발 스택
+2022년 5월 27일 ~ 2022년 5월 29일 (총 3일)
+(유지보수 기간 : 2022년 6월 2일 ~ 2022년 6월 4일)
+
+## 배포 링크
+
+- kb-healthcare-team-5.vercel.app
+
+## Dependencies
+
+<span><img src="https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=ESLint&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=Prettier&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/Sass-CC6699?style=flat-square&logo=Sass&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/stylelint-263238?style=flat-square&logo=stylelint&logoColor=white"/></span>
+<span><img src="https://img.shields.io/badge/classnames-000000?style=flat-square&logoColor=white"/></span>
 
 ## 폴더 구조
 
