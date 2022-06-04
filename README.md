@@ -20,5 +20,5 @@
 
 
 ## 맞춤 건강 관리
-* 사진?
+![image](https://user-images.githubusercontent.com/64529155/171986966-fecf7011-b04c-43d9-b69c-2dc91df92b8b.png)
 * 구현 설명
