@@ -32,7 +32,9 @@
   - 앱 전반적으로 사용되는 변수, 함수, 서비스 등을 담아둔 폴더입니다.
 
 ## 마이헬스
-* 사진?
+<img src="https://user-images.githubusercontent.com/47405655/171990789-b4b24b8c-a810-4cc6-8977-29a10a6e87d9.png" width="300" />
+
+
 * 구현 설명
 
 
