@@ -1,10 +1,9 @@
-import { useMemo } from 'react';
 import type { RefObject } from 'react';
 import cx from 'classnames';
 import { useIntersectionObserver, useRectBound } from './_hooks';
+import { cutoutBar } from './_utils';
 import styles from './scoreChart.module.scss';
 
-const BAR_SCLAE_FACTOR = 0.4;
 const LABEL_TOP = 20;
 const CHART_HEIGHT_RATIO = 6 / 7;
 
@@ -36,27 +35,12 @@ export default function ScoreChart({
   const { boundRef, boundHeight, boundWidth } = useRectBound<HTMLDivElement>();
   const { isVisible } = useIntersectionObserver(appRef, boundRef);
 
-  const barWidth =
-    ((boundWidth * BAR_SCLAE_FACTOR) /
-      (data.length > 1 ? 1 : 2) /
-      data.length) *
-    barScale;
-
-  const barSpacing = useMemo(() => {
-    if (data.length < 2) return 0;
-    return (
-      (boundWidth - padding * 2 - barWidth * data.length) / (data.length - 1)
-    );
-  }, [data.length, boundWidth, padding, barWidth]);
-
-  const values = data.map((datum) => (datum.value > 0 ? datum.value : 0));
-  const maxValue = Math.max(...values);
-  const divider = maxValue > 0 ? maxValue : 1;
-
-  const barHeights = values.map(
-    (value) => Math.max(((boundHeight - 20) * value) / divider),
-    20
-  );
+  const { barWidth, barSpacing, barHeights } = cutoutBar(data, {
+    boundWidth,
+    boundHeight,
+    barScale,
+    padding,
+  });
 
   const bars = barHeights.map((height, idx) => {
     const key = `chart-${data[idx].label}-${idx}`;
