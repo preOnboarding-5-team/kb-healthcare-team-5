@@ -56,10 +56,40 @@
 </details>
 
 ## 마이헬스
-<img src="https://user-images.githubusercontent.com/29668380/171992556-b4b661cd-8764-4c91-9bd9-759556e33203.gif" width="300" />
+<img src="https://user-images.githubusercontent.com/47405655/171990789-b4b24b8c-a810-4cc6-8977-29a10a6e87d9.png" width="300" />
 
 
-* 구현 설명
+### 구현 설명
+#### 차트 그리기
+```ts
+const drawCanvas = useCallback(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    if (ctx) {
+      ctx.beginPath();
+      ctx.lineWidth = 13;
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = '#f3f4f6';
+
+      ctx.arc(150, 80, 70, Math.PI * 0.8, Math.PI * 2.2);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.strokeStyle = '#ffd300';
+
+      ctx.arc(
+        150,
+        80,
+        70,
+        Math.PI * 0.8,
+        (Math.PI * 2.2 * Number(healthScore)) / 1000
+      );
+      ctx.stroke();
+    }
+  }, [healthScore]);
+```
+
+* 차트의 배경을 그린후, 데이터에 맞게 색을 입혀 한번 더 그리는 방법으로 구현했습니다.
 
 
 ## 건강점수 분석 결과
