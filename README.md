@@ -9,6 +9,10 @@
 
 ## 폴더 구조
 
+<details>
+<summary>폴더 구조</summary>
+<div markdown="1">
+  
 - 📁assets
   - 아이콘 및 이미지 등을 모아둔 폴더입니다.
 
@@ -30,6 +34,10 @@
 
 - 📁utils
   - 앱 전반적으로 사용되는 변수, 함수, 서비스 등을 담아둔 폴더입니다.
+
+
+</div>
+</details>
 
 ## 마이헬스
 <img src="https://user-images.githubusercontent.com/47405655/171990789-b4b24b8c-a810-4cc6-8977-29a10a6e87d9.png" width="300" />
